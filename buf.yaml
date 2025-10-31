@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: © 2025 Logan Magee
+#
+# SPDX-License-Identifier: Apache-2.0
+
+version: v2
+modules:
+  - path: .
+    name: buf.build/accrescent/app-publishing-api
+deps:
+  - buf.build/bufbuild/protovalidate:v1.0.0
+lint:
+  use:
+    - STANDARD
+    - COMMENTS
