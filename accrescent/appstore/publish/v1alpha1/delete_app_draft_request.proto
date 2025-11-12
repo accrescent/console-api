@@ -14,5 +14,8 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Request defining parameters for creating an app draft.
 message DeleteAppDraftRequest {
   // The ID of the app draft to delete.
-  optional string id = 1 [(buf.validate.field).required = true];
+  optional string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
 }
