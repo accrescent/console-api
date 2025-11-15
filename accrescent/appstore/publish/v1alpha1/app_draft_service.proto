@@ -6,6 +6,8 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
+import "accrescent/appstore/publish/v1alpha1/create_app_draft_listing_request.proto";
+import "accrescent/appstore/publish/v1alpha1/create_app_draft_listing_response.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_draft_response.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_draft_request.proto";
@@ -26,4 +28,7 @@ service AppDraftService {
 
   // Deletes an existing app draft.
   rpc DeleteAppDraft(DeleteAppDraftRequest) returns (DeleteAppDraftResponse);
+
+  // Creates a new app listing for an app draft.
+  rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse);
 }
