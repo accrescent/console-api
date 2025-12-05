@@ -18,6 +18,8 @@ import "accrescent/appstore/publish/v1alpha1/get_app_draft_package_upload_info_r
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_package_upload_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/submit_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/submit_app_draft_response.proto";
+import "accrescent/appstore/publish/v1alpha1/update_app_draft_request.proto";
+import "accrescent/appstore/publish/v1alpha1/update_app_draft_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
@@ -29,6 +31,9 @@ service AppDraftService {
 
   // Gets an app draft's upload info.
   rpc GetAppDraftPackageUploadInfo(GetAppDraftPackageUploadInfoRequest) returns (GetAppDraftPackageUploadInfoResponse);
+
+  // Updates an app draft.
+  rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse);
 
   // Submits an app draft for review.
   rpc SubmitAppDraft(SubmitAppDraftRequest) returns (SubmitAppDraftResponse);
