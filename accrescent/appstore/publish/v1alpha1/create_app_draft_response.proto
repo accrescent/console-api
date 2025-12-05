@@ -14,5 +14,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Response to creating a new app draft.
 message CreateAppDraftResponse {
   // The unique ID of the created app draft.
-  optional string id = 1 [(buf.validate.field).required = true];
+  optional string app_draft_id = 1 [(buf.validate.field).required = true];
 }
