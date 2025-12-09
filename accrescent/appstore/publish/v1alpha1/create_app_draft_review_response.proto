@@ -9,5 +9,5 @@ package accrescent.appstore.publish.v1alpha1;
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
-// Response to reviewing an app draft.
-message ReviewAppDraftResponse {}
+// Response to creating an app draft review.
+message CreateAppDraftReviewResponse {}

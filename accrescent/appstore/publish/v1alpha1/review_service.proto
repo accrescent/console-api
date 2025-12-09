@@ -6,8 +6,8 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
-import "accrescent/appstore/publish/v1alpha1/review_app_draft_request.proto";
-import "accrescent/appstore/publish/v1alpha1/review_app_draft_response.proto";
+import "accrescent/appstore/publish/v1alpha1/create_app_draft_review_request.proto";
+import "accrescent/appstore/publish/v1alpha1/create_app_draft_review_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
@@ -16,5 +16,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // store
 service ReviewService {
   // Reviews an app draft.
-  rpc ReviewAppDraft(ReviewAppDraftRequest) returns (ReviewAppDraftResponse);
+  rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse);
 }
