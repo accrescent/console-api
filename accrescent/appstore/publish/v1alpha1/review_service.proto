@@ -6,8 +6,6 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
-import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_request.proto";
-import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/review_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/review_app_draft_response.proto";
 
@@ -19,7 +17,4 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 service ReviewService {
   // Reviews an app draft.
   rpc ReviewAppDraft(ReviewAppDraftRequest) returns (ReviewAppDraftResponse);
-
-  // Gets an app draft's download info.
-  rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse);
 }

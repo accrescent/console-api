@@ -14,6 +14,8 @@ import "accrescent/appstore/publish/v1alpha1/delete_app_draft_listing_request.pr
 import "accrescent/appstore/publish/v1alpha1/delete_app_draft_listing_response.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_draft_response.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/submit_app_draft_request.proto";
@@ -31,6 +33,9 @@ service AppDraftService {
 
   // Gets an app draft's upload info.
   rpc GetAppDraftUploadInfo(GetAppDraftUploadInfoRequest) returns (GetAppDraftUploadInfoResponse);
+
+  // Gets an app draft's download info.
+  rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse);
 
   // Updates an app draft.
   rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse);
