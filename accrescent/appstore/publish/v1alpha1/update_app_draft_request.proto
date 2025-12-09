@@ -30,10 +30,6 @@ message UpdateAppDraftRequest {
   // Required to enforce forward-compatible use by clients.
   google.protobuf.FieldMask update_mask = 3 [
     (buf.validate.field).required = true,
-    (buf.validate.field).cel = {
-      id: "update_mask.contains_only_valid_paths"
-      message: "update mask must contain only valid paths"
-      expression: "this.paths.all(f, f in ['default_listing_language'])"
-    }
+    (buf.validate.field).field_mask.in = "default_listing_language"
   ];
 }
