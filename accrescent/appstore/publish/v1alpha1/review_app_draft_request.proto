@@ -1,0 +1,37 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/rejection_reason.proto";
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Request defining parameters for reviewing an app draft.
+message ReviewAppDraftRequest {
+  // The ID of the app draft to review.
+  optional string app_draft_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  // Whether the app draft should be approved. If false, it is rejected.
+  optional bool approved = 2 [(buf.validate.field).required = true];
+
+  // The list of reasons for rejection if the review is a rejection.
+  repeated RejectionReason rejection_reasons = 3;
+
+  option (buf.validate.message).cel = {
+    id: "rejection_reasons.present_iff_rejected"
+    message: "rejection reasons must be present if and only if review is a rejection"
+    expression:
+      "this.approved "
+      "? this.rejection_reasons.size() == 0 "
+      ": this.rejection_reasons.size() > 0"
+  };
+}

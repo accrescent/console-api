@@ -1,0 +1,25 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_response.proto";
+import "accrescent/appstore/publish/v1alpha1/review_app_draft_request.proto";
+import "accrescent/appstore/publish/v1alpha1/review_app_draft_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Service providing RPCs for managing reviews on items submitted to the app
+// store
+service ReviewService {
+  // Reviews an app draft.
+  rpc ReviewAppDraft(ReviewAppDraftRequest) returns (ReviewAppDraftResponse);
+
+  // Gets an app draft's download info.
+  rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse);
+}
