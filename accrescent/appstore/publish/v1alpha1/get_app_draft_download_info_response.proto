@@ -11,7 +11,7 @@ import "buf/validate/validate.proto";
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
-// Response to reviewing an app draft.
+// Response to getting an app draft's download info.
 message GetAppDraftDownloadInfoResponse {
   // The URL of the APK set which can be retrieved with a simple HTTP GET.
   optional string apk_set_url = 1 [
