@@ -19,4 +19,7 @@ message GetAppDraftListingIconUploadInfoRequest {
     (buf.validate.field).required = true,
     (buf.validate.field).string.uuid = true
   ];
+
+  // The language of the app listing to get icon upload info for.
+  optional string language = 2 [(buf.validate.field).required = true];
 }
