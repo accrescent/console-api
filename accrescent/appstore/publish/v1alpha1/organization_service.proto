@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/list_my_organizations_request.proto";
+import "accrescent/appstore/publish/v1alpha1/list_my_organizations_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Service providing RPCs for managing organizations.
+service OrganizationService {
+  // Lists the organizations the authenticated user is a member of.
+  rpc ListMyOrganizations(ListMyOrganizationsRequest) returns (ListMyOrganizationsResponse);
+}
