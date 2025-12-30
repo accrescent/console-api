@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/get_self_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_self_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Service providing RPCs for managing users.
+service UserService {
+  // Gets the user info for the currently authenticated user.
+  rpc GetSelf(GetSelfRequest) returns (GetSelfResponse);
+}
