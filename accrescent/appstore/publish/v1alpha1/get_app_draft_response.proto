@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/app_draft.proto";
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Response to getting an app draft.
+message GetAppDraftResponse {
+  // The requested app draft.
+  AppDraft draft = 1 [(buf.validate.field).required = true];
+}
