@@ -1,0 +1,24 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// An app draft.
+message AppDraft {
+  // The app draft's unique ID.
+  optional string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  // Whether the app draft has been submitted for review.
+  optional bool submitted = 2 [(buf.validate.field).required = true];
+}

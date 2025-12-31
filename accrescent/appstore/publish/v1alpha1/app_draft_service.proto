@@ -18,6 +18,8 @@ import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_request
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_download_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_listing_icon_upload_info_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_listing_icon_upload_info_response.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_draft_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/publish_app_draft_request.proto";
@@ -34,6 +36,9 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 service AppDraftService {
   // Creates a new app draft.
   rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse);
+
+  // Gets an app draft.
+  rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse);
 
   // Gets an app draft's upload info.
   rpc GetAppDraftUploadInfo(GetAppDraftUploadInfoRequest) returns (GetAppDraftUploadInfoResponse);
