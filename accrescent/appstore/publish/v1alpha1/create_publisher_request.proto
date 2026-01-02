@@ -18,4 +18,11 @@ message CreatePublisherRequest {
     (buf.validate.field).required = true,
     (buf.validate.field).string.uuid = true
   ];
+
+  // The email at which the publisher will receive publishing-related
+  // notifications.
+  optional string email = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.email = true
+  ];
 }
