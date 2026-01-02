@@ -18,4 +18,10 @@ message CreateReviewerRequest {
     (buf.validate.field).required = true,
     (buf.validate.field).string.uuid = true
   ];
+
+  // The email at which the reviewer will receive review-related notifications.
+  optional string email = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.email = true
+  ];
 }
