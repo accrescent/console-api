@@ -15,4 +15,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 message App {
   // The app's unique ID.
   optional string id = 1 [(buf.validate.field).required = true];
+
+  // The app's default listing language.
+  optional string default_listing_language = 2 [(buf.validate.field).required = true];
 }
