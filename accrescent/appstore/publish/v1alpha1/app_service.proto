@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/get_app_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Service providing RPCs for managing published apps.
+service AppService {
+  // Gets a published app.
+  rpc GetApp(GetAppRequest) returns (GetAppResponse);
+}
