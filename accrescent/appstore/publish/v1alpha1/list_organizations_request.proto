@@ -9,15 +9,14 @@ package accrescent.appstore.publish.v1alpha1;
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
-// Request defining parameters for retrieving an authenticated user's
-// organizations.
-message ListMyOrganizationsRequest {
+// Request defining parameters for listing organizations.
+message ListOrganizationsRequest {
   // The maximum number of organizations to return in the response. If
   // unspecified, defaults to 50. All requests with a higher page size will be
   // capped to 50.
   optional uint32 page_size = 1;
 
   // An opaque page continuation token returned in a previous
-  // ListMyOrganizationsResponse. If unspecified, the first page is returned.
+  // ListOrganizationsResponse. If unspecified, the first page is returned.
   optional string page_token = 2;
 }

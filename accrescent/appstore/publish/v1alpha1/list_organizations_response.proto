@@ -12,8 +12,8 @@ import "buf/validate/validate.proto";
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
-// Response to requesting an authenticated user's organizations.
-message ListMyOrganizationsResponse {
+// Response to listing organizations.
+message ListOrganizationsResponse {
   // The organizations matching the request parameters.
   repeated Organization organizations = 1 [(buf.validate.field).cel = {
     id: "organizations.have_unique_ids"
@@ -22,6 +22,6 @@ message ListMyOrganizationsResponse {
   }];
 
   // An opaque token which, if passed to another invocation of
-  // ListMyOrganizations, will return the next page of organizations.
+  // ListOrganizations, will return the next page of organizations.
   optional string next_page_token = 2;
 }
