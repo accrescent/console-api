@@ -8,6 +8,8 @@ package accrescent.appstore.publish.v1alpha1;
 
 import "accrescent/appstore/publish/v1alpha1/get_app_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_response.proto";
+import "accrescent/appstore/publish/v1alpha1/list_apps_request.proto";
+import "accrescent/appstore/publish/v1alpha1/list_apps_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
@@ -16,4 +18,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 service AppService {
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse);
+
+  // Lists published apps.
+  rpc ListApps(ListAppsRequest) returns (ListAppsResponse);
 }

@@ -1,0 +1,27 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/app.proto";
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Response to listing published apps.
+message ListAppsResponse {
+  // The apps matching the request parameters.
+  repeated App apps = 1 [(buf.validate.field).cel = {
+    id: "apps.have_unique_ids"
+    message: "apps must have unique IDs"
+    expression: "this.map(a, a.id).unique()"
+  }];
+
+  // An opaque token which, if passed to another invocation of ListApps, will
+  // return the next page of organizations.
+  optional string next_page_token = 2;
+}
