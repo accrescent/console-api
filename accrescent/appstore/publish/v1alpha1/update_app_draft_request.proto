@@ -28,9 +28,6 @@ message UpdateAppDraftRequest {
   // The list of fields to update.
   //
   // Required to enforce forward-compatible use by clients.
-  //
-  // Workaround for https://github.com/bufbuild/buf/issues/4248
-  // buf:lint:ignore PROTOVALIDATE
   google.protobuf.FieldMask update_mask = 3 [
     (buf.validate.field).required = true,
     (buf.validate.field).field_mask.in = "default_listing_language"
