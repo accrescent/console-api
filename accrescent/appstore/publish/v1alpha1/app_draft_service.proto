@@ -22,6 +22,8 @@ import "accrescent/appstore/publish/v1alpha1/get_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_draft_upload_info_response.proto";
+import "accrescent/appstore/publish/v1alpha1/list_app_drafts_request.proto";
+import "accrescent/appstore/publish/v1alpha1/list_app_drafts_response.proto";
 import "accrescent/appstore/publish/v1alpha1/publish_app_draft_request.proto";
 import "accrescent/appstore/publish/v1alpha1/publish_app_draft_response.proto";
 import "accrescent/appstore/publish/v1alpha1/submit_app_draft_request.proto";
@@ -39,6 +41,9 @@ service AppDraftService {
 
   // Gets an app draft.
   rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse);
+
+  // Lists app drafts.
+  rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse);
 
   // Gets an app draft's upload info.
   rpc GetAppDraftUploadInfo(GetAppDraftUploadInfoRequest) returns (GetAppDraftUploadInfoResponse);
