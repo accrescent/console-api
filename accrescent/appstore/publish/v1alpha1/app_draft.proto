@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
+import "accrescent/appstore/publish/v1alpha1/app_package.proto";
 import "buf/validate/validate.proto";
 
 option java_multiple_files = true;
@@ -21,4 +22,7 @@ message AppDraft {
 
   // Whether the app draft has been submitted for review.
   optional bool submitted = 2 [(buf.validate.field).required = true];
+
+  // The draft's associated package information, if available.
+  AppPackage app_package = 3;
 }
