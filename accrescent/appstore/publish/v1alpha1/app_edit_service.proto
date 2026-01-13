@@ -8,6 +8,8 @@ package accrescent.appstore.publish.v1alpha1;
 
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_response.proto";
+import "accrescent/appstore/publish/v1alpha1/submit_app_edit_request.proto";
+import "accrescent/appstore/publish/v1alpha1/submit_app_edit_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
@@ -16,4 +18,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 service AppEditService {
   // Creates a new app edit.
   rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse);
+
+  // Submits an app edit.
+  rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse);
 }

@@ -1,0 +1,21 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Request defining parameters for submitting an app edit.
+message SubmitAppEditRequest {
+  // The ID of the app edit to submit.
+  optional string app_edit_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
+}
