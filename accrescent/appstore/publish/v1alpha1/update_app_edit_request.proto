@@ -1,0 +1,35 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/field_mask.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Request defining parameters for updating an app edit.
+message UpdateAppEditRequest {
+  // The ID of the app draft to update.
+  optional string app_edit_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  // The edit's default listing language.
+  //
+  // Required because no other fields are supported for update yet.
+  optional string default_listing_language = 2 [(buf.validate.field).required = true];
+
+  // The list of fields to update.
+  //
+  // Required to enforce forward-compatible use by clients.
+  google.protobuf.FieldMask update_mask = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).field_mask.in = "default_listing_language"
+  ];
+}
