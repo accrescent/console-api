@@ -21,16 +21,19 @@ message AppDraft {
     (buf.validate.field).string.uuid = true
   ];
 
+  // The timestamp at which the app draft was created.
+  google.protobuf.Timestamp created_at = 2 [(buf.validate.field).required = true];
+
   // The draft's default listing language, if set.
-  optional string default_listing_language = 2;
+  optional string default_listing_language = 3;
 
   // The draft's associated package information, if available.
-  AppPackage app_package = 3;
+  AppPackage app_package = 4;
 
   // The timestamp at which the app draft has been submitted for review, if
   // applicable.
-  google.protobuf.Timestamp submitted_at = 4;
+  google.protobuf.Timestamp submitted_at = 5;
 
   // The timestamp at which the app draft has been published, if applicable.
-  google.protobuf.Timestamp published_at = 5;
+  google.protobuf.Timestamp published_at = 6;
 }
