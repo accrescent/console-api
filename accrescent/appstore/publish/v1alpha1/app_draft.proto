@@ -30,4 +30,7 @@ message AppDraft {
   // The timestamp at which the app draft has been submitted for review, if
   // applicable.
   google.protobuf.Timestamp submitted_at = 4;
+
+  // The timestamp at which the app draft has been published, if applicable.
+  google.protobuf.Timestamp published_at = 5;
 }
