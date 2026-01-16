@@ -14,8 +14,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // An organization of users.
 message Organization {
   // The organization's unique ID.
-  optional string id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string id = 1 [(buf.validate.field).required = true];
 }

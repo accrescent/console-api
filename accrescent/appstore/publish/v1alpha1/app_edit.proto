@@ -16,10 +16,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // An app edit.
 message AppEdit {
   // The app edit's unique ID.
-  optional string id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string id = 1 [(buf.validate.field).required = true];
 
   // The timestamp at which the app edit was created.
   google.protobuf.Timestamp created_at = 2 [(buf.validate.field).required = true];

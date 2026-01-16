@@ -14,10 +14,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Request defining parameters for creating a publisher.
 message CreatePublisherRequest {
   // The ID of the user to grant publisher privileges.
-  optional string user_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string user_id = 1 [(buf.validate.field).required = true];
 
   // The email at which the publisher will receive publishing-related
   // notifications.

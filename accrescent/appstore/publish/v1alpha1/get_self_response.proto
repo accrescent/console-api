@@ -14,8 +14,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Response to getting the currently authenticated user.
 message GetSelfResponse {
   // The unique ID of the authenticated user.
-  optional string user_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string user_id = 1 [(buf.validate.field).required = true];
 }

@@ -14,8 +14,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Request defining parameters for submitting an app draft.
 message SubmitAppDraftRequest {
   // The ID of the app draft to submit.
-  optional string app_draft_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string app_draft_id = 1 [(buf.validate.field).required = true];
 }

@@ -15,10 +15,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // info.
 message GetAppDraftListingIconUploadInfoRequest {
   // The ID of the app draft to get icon upload info for.
-  optional string app_draft_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string app_draft_id = 1 [(buf.validate.field).required = true];
 
   // The language of the app listing to get icon upload info for.
   optional string language = 2 [(buf.validate.field).required = true];

@@ -14,10 +14,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Request defining parameters for creating an app listing for an app draft.
 message CreateAppDraftListingRequest {
   // The app draft to create the app listing for.
-  optional string app_draft_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string app_draft_id = 1 [(buf.validate.field).required = true];
 
   // The language of this listing's fields as a BCP-47 tag.
   optional string language = 2 [

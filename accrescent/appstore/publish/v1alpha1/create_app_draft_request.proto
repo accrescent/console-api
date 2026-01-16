@@ -14,8 +14,5 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 // Request defining parameters for creating an app draft.
 message CreateAppDraftRequest {
   // The ID of the organization to create this app draft under.
-  optional string organization_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uuid = true
-  ];
+  optional string organization_id = 1 [(buf.validate.field).required = true];
 }
