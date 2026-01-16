@@ -1,0 +1,35 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "accrescent/appstore/publish/v1alpha1/app_package.proto";
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// An app edit.
+message AppEdit {
+  // The app edit's unique ID.
+  optional string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uuid = true
+  ];
+
+  // The timestamp at which the app edit was created.
+  google.protobuf.Timestamp created_at = 2 [(buf.validate.field).required = true];
+
+  // The app edit's default listing language.
+  optional string default_listing_language = 3 [(buf.validate.field).required = true];
+
+  // The edit's associated package information.
+  AppPackage app_package = 4 [(buf.validate.field).required = true];
+
+  // The timestamp at which the app edit has been published, if applicable.
+  google.protobuf.Timestamp published_at = 5;
+}
