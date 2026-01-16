@@ -21,10 +21,13 @@ message AppDraft {
     (buf.validate.field).string.uuid = true
   ];
 
+  // The draft's default listing language, if set.
+  optional string default_listing_language = 2;
+
   // The timestamp at which the app draft has been submitted for review, if
   // applicable.
-  google.protobuf.Timestamp submitted_at = 2;
+  google.protobuf.Timestamp submitted_at = 3;
 
   // The draft's associated package information, if available.
-  AppPackage app_package = 3;
+  AppPackage app_package = 4;
 }
