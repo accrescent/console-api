@@ -8,6 +8,7 @@ modules:
     name: buf.build/accrescent/app-publishing-api
 deps:
   - buf.build/bufbuild/protovalidate:v1.1.0
+  - buf.build/googleapis/googleapis
 lint:
   use:
     - STANDARD

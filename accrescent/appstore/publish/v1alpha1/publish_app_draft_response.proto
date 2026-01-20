@@ -6,8 +6,14 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
+import "buf/validate/validate.proto";
+import "google/longrunning/operations.proto";
+
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
 // Response to publishing an app draft.
-message PublishAppDraftResponse {}
+message PublishAppDraftResponse {
+  // The publishing operation.
+  google.longrunning.Operation operation = 1 [(buf.validate.field).required = true];
+}
