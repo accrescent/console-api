@@ -8,6 +8,8 @@ package accrescent.appstore.publish.v1alpha1;
 
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_response.proto";
+import "accrescent/appstore/publish/v1alpha1/delete_app_edit_request.proto";
+import "accrescent/appstore/publish/v1alpha1/delete_app_edit_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_edit_response.proto";
 import "accrescent/appstore/publish/v1alpha1/submit_app_edit_request.proto";
@@ -31,4 +33,7 @@ service AppEditService {
 
   // Submits an app edit.
   rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse);
+
+  // Deletes an app edit.
+  rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse);
 }
