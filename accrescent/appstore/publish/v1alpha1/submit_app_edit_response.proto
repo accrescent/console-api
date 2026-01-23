@@ -6,8 +6,14 @@ syntax = "proto3";
 
 package accrescent.appstore.publish.v1alpha1;
 
+import "google/longrunning/operations.proto";
+
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
 
 // Response to submitting an app edit.
-message SubmitAppEditResponse {}
+message SubmitAppEditResponse {
+  // The publishing operation. Present if and only if the edit doesn't require
+  // review.
+  google.longrunning.Operation operation = 1;
+}
