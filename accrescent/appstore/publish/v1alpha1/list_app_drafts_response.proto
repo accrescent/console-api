@@ -22,6 +22,6 @@ message ListAppDraftsResponse {
   }];
 
   // An opaque token which, if passed to another invocation of ListAppDrafts,
-  // will return the next page of organizations.
+  // will return the next page of app drafts.
   optional string next_page_token = 2;
 }
