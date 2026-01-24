@@ -14,6 +14,8 @@ import "accrescent/appstore/publish/v1alpha1/delete_app_edit_listing_request.pro
 import "accrescent/appstore/publish/v1alpha1/delete_app_edit_listing_response.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_edit_response.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_edit_download_info_request.proto";
+import "accrescent/appstore/publish/v1alpha1/get_app_edit_download_info_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_edit_response.proto";
 import "accrescent/appstore/publish/v1alpha1/list_app_edits_request.proto";
@@ -36,6 +38,9 @@ service AppEditService {
 
   // Lists app edits.
   rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse);
+
+  // Gets an app edit's download info.
+  rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse);
 
   // Updates an app edit.
   rpc UpdateAppEdit(UpdateAppEditRequest) returns (UpdateAppEditResponse);
