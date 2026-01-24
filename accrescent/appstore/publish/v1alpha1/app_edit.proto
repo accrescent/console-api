@@ -27,6 +27,9 @@ message AppEdit {
   // The edit's associated package information.
   AppPackage app_package = 4 [(buf.validate.field).required = true];
 
+  // The timestamp at which the app edit has been submitted, if applicable.
+  google.protobuf.Timestamp submitted_at = 5;
+
   // The timestamp at which the app edit has been published, if applicable.
-  google.protobuf.Timestamp published_at = 5;
+  google.protobuf.Timestamp published_at = 6;
 }
