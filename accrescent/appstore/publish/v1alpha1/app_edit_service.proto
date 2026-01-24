@@ -10,6 +10,8 @@ import "accrescent/appstore/publish/v1alpha1/create_app_edit_listing_request.pro
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_listing_response.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/create_app_edit_response.proto";
+import "accrescent/appstore/publish/v1alpha1/delete_app_edit_listing_request.proto";
+import "accrescent/appstore/publish/v1alpha1/delete_app_edit_listing_response.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_edit_request.proto";
 import "accrescent/appstore/publish/v1alpha1/delete_app_edit_response.proto";
 import "accrescent/appstore/publish/v1alpha1/get_app_edit_request.proto";
@@ -46,4 +48,7 @@ service AppEditService {
 
   // Creates a new app listing for an app edit.
   rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse);
+
+  // Deletes an existing app edit listing.
+  rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse);
 }
