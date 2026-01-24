@@ -1,0 +1,129 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Request defining parameters for creating an app listing for an app edit.
+message CreateAppEditListingRequest {
+  // The app edit to create the app listing for.
+  optional string app_edit_id = 1 [(buf.validate.field).required = true];
+
+  // The language of this listing's fields as a BCP-47 tag.
+  optional string language = 2 [
+    (buf.validate.field).required = true,
+    // Supported languages are the same as those supported by Google Play. See
+    // https://support.google.com/googleplay/android-developer/answer/9844778
+    // for more details. If Play supports a language not listed here, please
+    // report a bug.
+    (buf.validate.field).string.in = "af",
+    (buf.validate.field).string.in = "sq",
+    (buf.validate.field).string.in = "am",
+    (buf.validate.field).string.in = "ar",
+    (buf.validate.field).string.in = "hy-AM",
+    (buf.validate.field).string.in = "az-AZ",
+    (buf.validate.field).string.in = "bn-BD",
+    (buf.validate.field).string.in = "eu-ES",
+    (buf.validate.field).string.in = "be",
+    (buf.validate.field).string.in = "bg",
+    (buf.validate.field).string.in = "my-MM",
+    (buf.validate.field).string.in = "ca",
+    (buf.validate.field).string.in = "zh-HK",
+    (buf.validate.field).string.in = "zh-CN",
+    (buf.validate.field).string.in = "zh-TW",
+    (buf.validate.field).string.in = "hr",
+    (buf.validate.field).string.in = "cs-CZ",
+    (buf.validate.field).string.in = "da-DK",
+    (buf.validate.field).string.in = "nl-NL",
+    (buf.validate.field).string.in = "en-AU",
+    (buf.validate.field).string.in = "en-CA",
+    (buf.validate.field).string.in = "en-US",
+    (buf.validate.field).string.in = "en-GB",
+    (buf.validate.field).string.in = "en-IN",
+    (buf.validate.field).string.in = "en-SG",
+    (buf.validate.field).string.in = "en-ZA",
+    (buf.validate.field).string.in = "et",
+    (buf.validate.field).string.in = "fil",
+    (buf.validate.field).string.in = "fi-FI",
+    (buf.validate.field).string.in = "fr-CA",
+    (buf.validate.field).string.in = "fr-FR",
+    (buf.validate.field).string.in = "gl-ES",
+    (buf.validate.field).string.in = "ka-GE",
+    (buf.validate.field).string.in = "de-DE",
+    (buf.validate.field).string.in = "el-GR",
+    (buf.validate.field).string.in = "gu",
+    (buf.validate.field).string.in = "iw-IL",
+    (buf.validate.field).string.in = "hi-IN",
+    (buf.validate.field).string.in = "hu-HU",
+    (buf.validate.field).string.in = "is-IS",
+    (buf.validate.field).string.in = "id",
+    (buf.validate.field).string.in = "it-IT",
+    (buf.validate.field).string.in = "ja-JP",
+    (buf.validate.field).string.in = "kn-IN",
+    (buf.validate.field).string.in = "kk",
+    (buf.validate.field).string.in = "km-KH",
+    (buf.validate.field).string.in = "ko-KR",
+    (buf.validate.field).string.in = "ky-KG",
+    (buf.validate.field).string.in = "lo-LA",
+    (buf.validate.field).string.in = "lv",
+    (buf.validate.field).string.in = "lt",
+    (buf.validate.field).string.in = "mk-MK",
+    (buf.validate.field).string.in = "ms-MY",
+    (buf.validate.field).string.in = "ms",
+    (buf.validate.field).string.in = "ml-IN",
+    (buf.validate.field).string.in = "mr-IN",
+    (buf.validate.field).string.in = "mn-MN",
+    (buf.validate.field).string.in = "ne-NP",
+    (buf.validate.field).string.in = "no-NO",
+    (buf.validate.field).string.in = "fa",
+    (buf.validate.field).string.in = "fa-AE",
+    (buf.validate.field).string.in = "fa-AF",
+    (buf.validate.field).string.in = "fa-IR",
+    (buf.validate.field).string.in = "pl-PL",
+    (buf.validate.field).string.in = "pt-BR",
+    (buf.validate.field).string.in = "pt-PT",
+    (buf.validate.field).string.in = "pa",
+    (buf.validate.field).string.in = "ro",
+    (buf.validate.field).string.in = "rm",
+    (buf.validate.field).string.in = "ru-RU",
+    (buf.validate.field).string.in = "sr",
+    (buf.validate.field).string.in = "si-LK",
+    (buf.validate.field).string.in = "sk",
+    (buf.validate.field).string.in = "sl",
+    (buf.validate.field).string.in = "es-419",
+    (buf.validate.field).string.in = "es-ES",
+    (buf.validate.field).string.in = "es-US",
+    (buf.validate.field).string.in = "sw",
+    (buf.validate.field).string.in = "sv-SE",
+    (buf.validate.field).string.in = "ta-IN",
+    (buf.validate.field).string.in = "te-IN",
+    (buf.validate.field).string.in = "th",
+    (buf.validate.field).string.in = "tr-TR",
+    (buf.validate.field).string.in = "uk",
+    (buf.validate.field).string.in = "ur",
+    (buf.validate.field).string.in = "vi"
+  ];
+
+  // The proper name of the app, possibly including very short descriptive text
+  // (e.g. "SecureChat - Secure Texting").
+  optional string name = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 3,
+    (buf.validate.field).string.max_len = 30
+  ];
+
+  // A short description of the app to be shown in headers and small screen
+  // spaces.
+  optional string short_description = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 3,
+    (buf.validate.field).string.max_len = 80
+  ];
+}
