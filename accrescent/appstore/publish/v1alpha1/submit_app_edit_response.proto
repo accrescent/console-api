@@ -15,5 +15,7 @@ option java_package = "app.accrescent.appstore.publish.v1alpha1";
 message SubmitAppEditResponse {
   // The publishing operation. Present if and only if the edit doesn't require
   // review.
+  //
+  // The response type of this operation is PublishAppEditResult.
   google.longrunning.Operation operation = 1;
 }
