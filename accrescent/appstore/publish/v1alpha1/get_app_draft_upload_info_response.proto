@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.appstore.publish.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/longrunning/operations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.appstore.publish.v1alpha1";
@@ -19,4 +20,7 @@ message GetAppDraftUploadInfoResponse {
     (buf.validate.field).required = true,
     (buf.validate.field).string.uri = true
   ];
+
+  // The upload processing operation.
+  google.longrunning.Operation processing_operation = 2 [(buf.validate.field).required = true];
 }
