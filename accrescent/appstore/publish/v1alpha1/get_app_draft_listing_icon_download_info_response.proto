@@ -1,0 +1,21 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.appstore.publish.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.appstore.publish.v1alpha1";
+
+// Response to getting an app draft listing icon's download info.
+message GetAppDraftListingIconDownloadInfoResponse {
+  // The URL of the icon which can be retrieved with a simple HTTP GET.
+  optional string icon_url = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uri = true
+  ];
+}
