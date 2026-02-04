@@ -22,5 +22,7 @@ message GetAppEditUploadInfoResponse {
   ];
 
   // The upload processing operation.
+  //
+  // The response type of this operation is UploadAppEditResult.
   google.longrunning.Operation processing_operation = 2 [(buf.validate.field).required = true];
 }
