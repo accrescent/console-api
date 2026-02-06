@@ -18,4 +18,7 @@ message App {
 
   // The app's default listing language.
   optional string default_listing_language = 2 [(buf.validate.field).required = true];
+
+  // Whether the app is publicly listed on the store.
+  optional bool publicly_listed = 3 [(buf.validate.field).required = true];
 }
