@@ -1,0 +1,21 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Request defining parameters for deleting an app edit listing.
+message DeleteAppEditListingRequest {
+  // The ID of the app edit the listing is associated with.
+  optional string app_edit_id = 1 [(buf.validate.field).required = true];
+
+  // The BCP-47 language tag of the listing to delete.
+  optional string language = 2 [(buf.validate.field).required = true];
+}

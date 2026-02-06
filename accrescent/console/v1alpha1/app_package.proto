@@ -1,0 +1,30 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// An app package.
+message AppPackage {
+  // The app package's Android application ID.
+  optional string app_id = 1 [(buf.validate.field).required = true];
+
+  // The app package's version code.
+  optional uint64 version_code = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).uint64.gt = 0
+  ];
+
+  // The app package's version name.
+  optional string version_name = 3 [(buf.validate.field).required = true];
+
+  // The app package's target SDK.
+  optional uint64 target_sdk = 4 [(buf.validate.field).required = true];
+}

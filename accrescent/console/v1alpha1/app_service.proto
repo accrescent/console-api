@@ -1,0 +1,29 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/get_app_request.proto";
+import "accrescent/console/v1alpha1/get_app_response.proto";
+import "accrescent/console/v1alpha1/list_apps_request.proto";
+import "accrescent/console/v1alpha1/list_apps_response.proto";
+import "accrescent/console/v1alpha1/update_app_request.proto";
+import "accrescent/console/v1alpha1/update_app_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Service providing RPCs for managing published apps.
+service AppService {
+  // Gets a published app.
+  rpc GetApp(GetAppRequest) returns (GetAppResponse);
+
+  // Lists published apps.
+  rpc ListApps(ListAppsRequest) returns (ListAppsResponse);
+
+  // Updates a published app.
+  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse);
+}

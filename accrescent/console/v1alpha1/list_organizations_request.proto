@@ -1,0 +1,22 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Request defining parameters for listing organizations.
+message ListOrganizationsRequest {
+  // The maximum number of organizations to return in the response. If
+  // unspecified, defaults to 50. All requests with a higher page size will be
+  // capped to 50.
+  optional uint32 page_size = 1;
+
+  // An opaque page continuation token returned in a previous
+  // ListOrganizationsResponse. If unspecified, the first page is returned.
+  optional string page_token = 2;
+}

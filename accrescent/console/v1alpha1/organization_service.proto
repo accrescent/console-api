@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/list_organizations_request.proto";
+import "accrescent/console/v1alpha1/list_organizations_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Service providing RPCs for managing organizations.
+service OrganizationService {
+  // Lists organizations.
+  rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse);
+}

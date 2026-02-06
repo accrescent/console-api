@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/app_edit.proto";
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Response to getting an app edit.
+message GetAppEditResponse {
+  // The requested app edit.
+  AppEdit app_edit = 1 [(buf.validate.field).required = true];
+}

@@ -5,7 +5,7 @@
 version: v2
 modules:
   - path: .
-    name: buf.build/accrescent/app-publishing-api
+    name: buf.build/accrescent/console-api
 deps:
   - buf.build/bufbuild/protovalidate:v1.1.0
   - buf.build/googleapis/googleapis

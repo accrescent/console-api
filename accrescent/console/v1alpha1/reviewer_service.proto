@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/create_reviewer_request.proto";
+import "accrescent/console/v1alpha1/create_reviewer_response.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Service providing RPCs for managing store reviewers.
+service ReviewerService {
+  // Creates a store reviewer.
+  rpc CreateReviewer(CreateReviewerRequest) returns (CreateReviewerResponse);
+}

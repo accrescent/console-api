@@ -1,0 +1,18 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Request defining parameters for getting a published app.
+message GetAppRequest {
+  // The ID of the app to retrieve.
+  optional string app_id = 1 [(buf.validate.field).required = true];
+}
