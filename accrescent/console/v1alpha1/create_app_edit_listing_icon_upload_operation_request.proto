@@ -11,12 +11,12 @@ import "buf/validate/validate.proto";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// Request defining parameters for getting an app edit listing icon's upload
-// info.
-message GetAppEditListingIconUploadInfoRequest {
-  // The ID of the app edit to get icon upload info for.
+// Request defining parameters for creating an app edit listing icon upload
+// operation.
+message CreateAppEditListingIconUploadOperationRequest {
+  // The ID of the app edit to create an icon upload operation for.
   optional string app_edit_id = 1 [(buf.validate.field).required = true];
 
-  // The language of the app listing to get icon upload info for.
+  // The language of the app listing to create an icon upload operation for.
   optional string language = 2 [(buf.validate.field).required = true];
 }

@@ -11,8 +11,8 @@ import "buf/validate/validate.proto";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// Request defining parameters for getting an app edit's upload info.
-message GetAppEditUploadInfoRequest {
-  // The ID of the app edit to get upload info for.
+// Request defining parameters for creating an app edit upload operation.
+message CreateAppEditUploadOperationRequest {
+  // The ID of the app edit to create an upload operation for.
   optional string app_edit_id = 1 [(buf.validate.field).required = true];
 }

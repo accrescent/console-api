@@ -6,10 +6,14 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
+import "accrescent/console/v1alpha1/create_app_draft_listing_icon_upload_operation_request.proto";
+import "accrescent/console/v1alpha1/create_app_draft_listing_icon_upload_operation_response.proto";
 import "accrescent/console/v1alpha1/create_app_draft_listing_request.proto";
 import "accrescent/console/v1alpha1/create_app_draft_listing_response.proto";
 import "accrescent/console/v1alpha1/create_app_draft_request.proto";
 import "accrescent/console/v1alpha1/create_app_draft_response.proto";
+import "accrescent/console/v1alpha1/create_app_draft_upload_operation_request.proto";
+import "accrescent/console/v1alpha1/create_app_draft_upload_operation_response.proto";
 import "accrescent/console/v1alpha1/delete_app_draft_listing_request.proto";
 import "accrescent/console/v1alpha1/delete_app_draft_listing_response.proto";
 import "accrescent/console/v1alpha1/delete_app_draft_request.proto";
@@ -18,12 +22,8 @@ import "accrescent/console/v1alpha1/get_app_draft_download_info_request.proto";
 import "accrescent/console/v1alpha1/get_app_draft_download_info_response.proto";
 import "accrescent/console/v1alpha1/get_app_draft_listing_icon_download_info_request.proto";
 import "accrescent/console/v1alpha1/get_app_draft_listing_icon_download_info_response.proto";
-import "accrescent/console/v1alpha1/get_app_draft_listing_icon_upload_info_request.proto";
-import "accrescent/console/v1alpha1/get_app_draft_listing_icon_upload_info_response.proto";
 import "accrescent/console/v1alpha1/get_app_draft_request.proto";
 import "accrescent/console/v1alpha1/get_app_draft_response.proto";
-import "accrescent/console/v1alpha1/get_app_draft_upload_info_request.proto";
-import "accrescent/console/v1alpha1/get_app_draft_upload_info_response.proto";
 import "accrescent/console/v1alpha1/list_app_drafts_request.proto";
 import "accrescent/console/v1alpha1/list_app_drafts_response.proto";
 import "accrescent/console/v1alpha1/publish_app_draft_request.proto";
@@ -47,8 +47,8 @@ service AppDraftService {
   // Lists app drafts.
   rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse);
 
-  // Gets an app draft's upload info.
-  rpc GetAppDraftUploadInfo(GetAppDraftUploadInfoRequest) returns (GetAppDraftUploadInfoResponse);
+  // Creates an app draft upload operation.
+  rpc CreateAppDraftUploadOperation(CreateAppDraftUploadOperationRequest) returns (CreateAppDraftUploadOperationResponse);
 
   // Gets an app draft's download info.
   rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse);
@@ -65,8 +65,8 @@ service AppDraftService {
   // Creates a new app listing for an app draft.
   rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse);
 
-  // Gets an app draft listing icon's upload info.
-  rpc GetAppDraftListingIconUploadInfo(GetAppDraftListingIconUploadInfoRequest) returns (GetAppDraftListingIconUploadInfoResponse);
+  // Creates an app draft listing icon upload operation.
+  rpc CreateAppDraftListingIconUploadOperation(CreateAppDraftListingIconUploadOperationRequest) returns (CreateAppDraftListingIconUploadOperationResponse);
 
   // Gets an app draft listing icon's download info.
   rpc GetAppDraftListingIconDownloadInfo(GetAppDraftListingIconDownloadInfoRequest) returns (GetAppDraftListingIconDownloadInfoResponse);

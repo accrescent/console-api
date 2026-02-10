@@ -6,22 +6,22 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
+import "accrescent/console/v1alpha1/create_app_edit_listing_icon_upload_operation_request.proto";
+import "accrescent/console/v1alpha1/create_app_edit_listing_icon_upload_operation_response.proto";
 import "accrescent/console/v1alpha1/create_app_edit_listing_request.proto";
 import "accrescent/console/v1alpha1/create_app_edit_listing_response.proto";
 import "accrescent/console/v1alpha1/create_app_edit_request.proto";
 import "accrescent/console/v1alpha1/create_app_edit_response.proto";
+import "accrescent/console/v1alpha1/create_app_edit_upload_operation_request.proto";
+import "accrescent/console/v1alpha1/create_app_edit_upload_operation_response.proto";
 import "accrescent/console/v1alpha1/delete_app_edit_listing_request.proto";
 import "accrescent/console/v1alpha1/delete_app_edit_listing_response.proto";
 import "accrescent/console/v1alpha1/delete_app_edit_request.proto";
 import "accrescent/console/v1alpha1/delete_app_edit_response.proto";
 import "accrescent/console/v1alpha1/get_app_edit_download_info_request.proto";
 import "accrescent/console/v1alpha1/get_app_edit_download_info_response.proto";
-import "accrescent/console/v1alpha1/get_app_edit_listing_icon_upload_info_request.proto";
-import "accrescent/console/v1alpha1/get_app_edit_listing_icon_upload_info_response.proto";
 import "accrescent/console/v1alpha1/get_app_edit_request.proto";
 import "accrescent/console/v1alpha1/get_app_edit_response.proto";
-import "accrescent/console/v1alpha1/get_app_edit_upload_info_request.proto";
-import "accrescent/console/v1alpha1/get_app_edit_upload_info_response.proto";
 import "accrescent/console/v1alpha1/list_app_edits_request.proto";
 import "accrescent/console/v1alpha1/list_app_edits_response.proto";
 import "accrescent/console/v1alpha1/submit_app_edit_request.proto";
@@ -43,8 +43,8 @@ service AppEditService {
   // Lists app edits.
   rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse);
 
-  // Gets an app edit's upload info.
-  rpc GetAppEditUploadInfo(GetAppEditUploadInfoRequest) returns (GetAppEditUploadInfoResponse);
+  // Creates an app edit upload operation.
+  rpc CreateAppEditUploadOperation(CreateAppEditUploadOperationRequest) returns (CreateAppEditUploadOperationResponse);
 
   // Gets an app edit's download info.
   rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse);
@@ -61,8 +61,8 @@ service AppEditService {
   // Creates a new app listing for an app edit.
   rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse);
 
-  // Gets an app edit listing icon's upload info.
-  rpc GetAppEditListingIconUploadInfo(GetAppEditListingIconUploadInfoRequest) returns (GetAppEditListingIconUploadInfoResponse);
+  // Creates an app edit listing icon upload operation.
+  rpc CreateAppEditListingIconUploadOperation(CreateAppEditListingIconUploadOperationRequest) returns (CreateAppEditListingIconUploadOperationResponse);
 
   // Deletes an existing app edit listing.
   rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse);
