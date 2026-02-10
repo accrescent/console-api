@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/create_reviewer_request.proto";
 import "accrescent/console/v1alpha1/create_reviewer_response.proto";
+import "google/api/annotations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
@@ -15,5 +16,10 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing store reviewers.
 service ReviewerService {
   // Creates a store reviewer.
-  rpc CreateReviewer(CreateReviewerRequest) returns (CreateReviewerResponse);
+  rpc CreateReviewer(CreateReviewerRequest) returns (CreateReviewerResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/reviewers"
+      body: "*"
+    };
+  }
 }

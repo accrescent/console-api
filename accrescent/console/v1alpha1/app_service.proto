@@ -12,6 +12,7 @@ import "accrescent/console/v1alpha1/list_apps_request.proto";
 import "accrescent/console/v1alpha1/list_apps_response.proto";
 import "accrescent/console/v1alpha1/update_app_request.proto";
 import "accrescent/console/v1alpha1/update_app_response.proto";
+import "google/api/annotations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
@@ -19,11 +20,20 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing published apps.
 service AppService {
   // Gets a published app.
-  rpc GetApp(GetAppRequest) returns (GetAppResponse);
+  rpc GetApp(GetAppRequest) returns (GetAppResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"};
+  }
 
   // Lists published apps.
-  rpc ListApps(ListAppsRequest) returns (ListAppsResponse);
+  rpc ListApps(ListAppsRequest) returns (ListAppsResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps"};
+  }
 
   // Updates a published app.
-  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse);
+  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse) {
+    option (google.api.http) = {
+      patch: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"
+      body: "*"
+    };
+  }
 }

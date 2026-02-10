@@ -28,6 +28,7 @@ import "accrescent/console/v1alpha1/submit_app_edit_request.proto";
 import "accrescent/console/v1alpha1/submit_app_edit_response.proto";
 import "accrescent/console/v1alpha1/update_app_edit_request.proto";
 import "accrescent/console/v1alpha1/update_app_edit_response.proto";
+import "google/api/annotations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
@@ -35,35 +36,72 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing app edits.
 service AppEditService {
   // Creates a new app edit.
-  rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse);
+  rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/apps/{app_id}/edits"
+      body: "*"
+    };
+  }
 
   // Gets an app edit.
-  rpc GetAppEdit(GetAppEditRequest) returns (GetAppEditResponse);
+  rpc GetAppEdit(GetAppEditRequest) returns (GetAppEditResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
+  }
 
   // Lists app edits.
-  rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse);
+  rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits"};
+  }
 
   // Creates an app edit upload operation.
-  rpc CreateAppEditUploadOperation(CreateAppEditUploadOperationRequest) returns (CreateAppEditUploadOperationResponse);
+  rpc CreateAppEditUploadOperation(CreateAppEditUploadOperationRequest) returns (CreateAppEditUploadOperationResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/upload_operations"
+      body: "*"
+    };
+  }
 
   // Gets an app edit's download info.
-  rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse);
+  rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/download_info"};
+  }
 
   // Updates an app edit.
-  rpc UpdateAppEdit(UpdateAppEditRequest) returns (UpdateAppEditResponse);
+  rpc UpdateAppEdit(UpdateAppEditRequest) returns (UpdateAppEditResponse) {
+    option (google.api.http) = {
+      patch: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"
+      body: "*"
+    };
+  }
 
   // Submits an app edit.
-  rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse);
+  rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}:submit"
+      body: "*"
+    };
+  }
 
   // Deletes an app edit.
-  rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse);
+  rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse) {
+    option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
+  }
 
   // Creates a new app listing for an app edit.
-  rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse);
+  rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}"
+      body: "*"
+    };
+  }
 
   // Creates an app edit listing icon upload operation.
-  rpc CreateAppEditListingIconUploadOperation(CreateAppEditListingIconUploadOperationRequest) returns (CreateAppEditListingIconUploadOperationResponse);
+  rpc CreateAppEditListingIconUploadOperation(CreateAppEditListingIconUploadOperationRequest) returns (CreateAppEditListingIconUploadOperationResponse) {
+    option (google.api.http) = {post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}/icon/upload_operations"};
+  }
 
   // Deletes an existing app edit listing.
-  rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse);
+  rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse) {
+    option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}"};
+  }
 }

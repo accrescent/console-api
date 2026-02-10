@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/create_publisher_request.proto";
 import "accrescent/console/v1alpha1/create_publisher_response.proto";
+import "google/api/annotations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
@@ -15,5 +16,10 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing store publishers.
 service PublisherService {
   // Creates a store publisher.
-  rpc CreatePublisher(CreatePublisherRequest) returns (CreatePublisherResponse);
+  rpc CreatePublisher(CreatePublisherRequest) returns (CreatePublisherResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/publishers"
+      body: "*"
+    };
+  }
 }

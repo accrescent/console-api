@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/get_self_request.proto";
 import "accrescent/console/v1alpha1/get_self_response.proto";
+import "google/api/annotations.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
@@ -15,5 +16,7 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing users.
 service UserService {
   // Gets the user info for the currently authenticated user.
-  rpc GetSelf(GetSelfRequest) returns (GetSelfResponse);
+  rpc GetSelf(GetSelfRequest) returns (GetSelfResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/user"};
+  }
 }
