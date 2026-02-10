@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating an app edit.
 message UpdateAppEditRequest {
   // The ID of the app draft to update.
-  optional string app_edit_id = 1 [(buf.validate.field).required = true];
+  string app_edit_id = 1 [(buf.validate.field).required = true];
 
   // The edit's default listing language.
   //

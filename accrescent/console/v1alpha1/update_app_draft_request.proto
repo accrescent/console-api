@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating an app draft.
 message UpdateAppDraftRequest {
   // The ID of the app draft to update.
-  optional string app_draft_id = 1 [(buf.validate.field).required = true];
+  string app_draft_id = 1 [(buf.validate.field).required = true];
 
   // The draft's default listing language.
   //

@@ -16,8 +16,8 @@ option java_package = "app.accrescent.console.v1alpha1";
 // operation.
 message CreateAppEditListingIconUploadOperationRequest {
   // The ID of the app edit to create an icon upload operation for.
-  optional string app_edit_id = 1 [(buf.validate.field).required = true];
+  string app_edit_id = 1 [(buf.validate.field).required = true];
 
   // The language of the app listing to create an icon upload operation for.
-  optional string language = 2 [(buf.validate.field).required = true];
+  string language = 2 [(buf.validate.field).required = true];
 }

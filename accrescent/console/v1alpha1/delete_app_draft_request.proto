@@ -15,5 +15,5 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for deleting an app draft.
 message DeleteAppDraftRequest {
   // The ID of the app draft to delete.
-  optional string app_draft_id = 1 [(buf.validate.field).required = true];
+  string app_draft_id = 1 [(buf.validate.field).required = true];
 }

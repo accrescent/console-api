@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating a published app.
 message UpdateAppRequest {
   // The ID of the app to update.
-  optional string app_id = 1 [(buf.validate.field).required = true];
+  string app_id = 1 [(buf.validate.field).required = true];
 
   // Whether the app is publicly listed on the store.
   optional bool publicly_listed = 2 [(buf.validate.field).required = true];

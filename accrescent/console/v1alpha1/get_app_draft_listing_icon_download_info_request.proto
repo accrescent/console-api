@@ -16,8 +16,8 @@ option java_package = "app.accrescent.console.v1alpha1";
 // info.
 message GetAppDraftListingIconDownloadInfoRequest {
   // The ID of the app draft of the listing to get icon download info for.
-  optional string app_draft_id = 1 [(buf.validate.field).required = true];
+  string app_draft_id = 1 [(buf.validate.field).required = true];
 
   // The language of the listing to get icon download info for.
-  optional string language = 2 [(buf.validate.field).required = true];
+  string language = 2 [(buf.validate.field).required = true];
 }

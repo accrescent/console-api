@@ -15,5 +15,5 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for getting an app edit.
 message GetAppEditRequest {
   // The ID of the app edit to retrieve.
-  optional string app_edit_id = 1 [(buf.validate.field).required = true];
+  string app_edit_id = 1 [(buf.validate.field).required = true];
 }

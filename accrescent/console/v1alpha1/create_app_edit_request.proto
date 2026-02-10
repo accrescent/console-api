@@ -15,5 +15,5 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for creating an app edit.
 message CreateAppEditRequest {
   // The ID of the app to create an edit for.
-  optional string app_id = 1 [(buf.validate.field).required = true];
+  string app_id = 1 [(buf.validate.field).required = true];
 }

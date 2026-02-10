@@ -15,7 +15,7 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for listing app edits.
 message ListAppEditsRequest {
   // The app containing the edits to list.
-  optional string app_id = 1 [(buf.validate.field).required = true];
+  string app_id = 1 [(buf.validate.field).required = true];
 
   // The maximum number of app edits to return in the response. If unspecified,
   // defaults to 50. All requests with a higher page size will be capped to 50.
