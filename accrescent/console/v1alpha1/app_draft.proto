@@ -10,6 +10,7 @@ import "accrescent/console/v1alpha1/app_package.proto";
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
+option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
