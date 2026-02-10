@@ -9,6 +9,7 @@ package accrescent.console.v1alpha1;
 import "accrescent/console/v1alpha1/create_app_draft_review_request.proto";
 import "accrescent/console/v1alpha1/create_app_draft_review_response.proto";
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -23,5 +24,6 @@ service ReviewService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/reviews"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Reviews"};
   }
 }

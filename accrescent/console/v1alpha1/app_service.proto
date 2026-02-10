@@ -13,6 +13,7 @@ import "accrescent/console/v1alpha1/list_apps_response.proto";
 import "accrescent/console/v1alpha1/update_app_request.proto";
 import "accrescent/console/v1alpha1/update_app_response.proto";
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -23,11 +24,13 @@ service AppService {
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Apps"};
   }
 
   // Lists published apps.
   rpc ListApps(ListAppsRequest) returns (ListAppsResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Apps"};
   }
 
   // Updates a published app.
@@ -36,5 +39,6 @@ service AppService {
       patch: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Apps"};
   }
 }

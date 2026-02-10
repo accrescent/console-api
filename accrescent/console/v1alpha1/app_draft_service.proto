@@ -33,6 +33,7 @@ import "accrescent/console/v1alpha1/submit_app_draft_response.proto";
 import "accrescent/console/v1alpha1/update_app_draft_request.proto";
 import "accrescent/console/v1alpha1/update_app_draft_response.proto";
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -46,16 +47,19 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Gets an app draft.
   rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Lists app drafts.
   rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_drafts"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Creates an app draft upload operation.
@@ -64,11 +68,13 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/upload_operations"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Gets an app draft's download info.
   rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/download_info"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Updates an app draft.
@@ -77,6 +83,7 @@ service AppDraftService {
       patch: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Submits an app draft for review.
@@ -85,11 +92,13 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}:submit"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Deletes an existing app draft.
   rpc DeleteAppDraft(DeleteAppDraftRequest) returns (DeleteAppDraftResponse) {
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Creates a new app listing for an app draft.
@@ -98,6 +107,7 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/listings/{language}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Creates an app draft listing icon upload operation.
@@ -106,16 +116,19 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/listings/{language}/icon/upload_operations"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Gets an app draft listing icon's download info.
   rpc GetAppDraftListingIconDownloadInfo(GetAppDraftListingIconDownloadInfoRequest) returns (GetAppDraftListingIconDownloadInfoResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/listings/{language}/icon/download_info"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Deletes an existing app draft listing.
   rpc DeleteAppDraftListing(DeleteAppDraftListingRequest) returns (DeleteAppDraftListingResponse) {
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/listings/{language}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 
   // Publishes an app draft to the app store.
@@ -124,5 +137,6 @@ service AppDraftService {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}:publish"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App drafts"};
   }
 }

@@ -29,6 +29,7 @@ import "accrescent/console/v1alpha1/submit_app_edit_response.proto";
 import "accrescent/console/v1alpha1/update_app_edit_request.proto";
 import "accrescent/console/v1alpha1/update_app_edit_response.proto";
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -42,16 +43,19 @@ service AppEditService {
       post: "/grpc/accrescent.console.v1alpha1/apps/{app_id}/edits"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Gets an app edit.
   rpc GetAppEdit(GetAppEditRequest) returns (GetAppEditResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Lists app edits.
   rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Creates an app edit upload operation.
@@ -60,11 +64,13 @@ service AppEditService {
       post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/upload_operations"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Gets an app edit's download info.
   rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/download_info"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Updates an app edit.
@@ -73,6 +79,7 @@ service AppEditService {
       patch: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Submits an app edit.
@@ -81,11 +88,13 @@ service AppEditService {
       post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}:submit"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Deletes an app edit.
   rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse) {
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Creates a new app listing for an app edit.
@@ -94,15 +103,18 @@ service AppEditService {
       post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}"
       body: "*"
     };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Creates an app edit listing icon upload operation.
   rpc CreateAppEditListingIconUploadOperation(CreateAppEditListingIconUploadOperationRequest) returns (CreateAppEditListingIconUploadOperationResponse) {
     option (google.api.http) = {post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}/icon/upload_operations"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 
   // Deletes an existing app edit listing.
   rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse) {
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "App edits"};
   }
 }
