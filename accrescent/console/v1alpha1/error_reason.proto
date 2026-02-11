@@ -1,0 +1,71 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// The possible values for `google.rpc.ErrorInfo.reason` in the
+// "console-api.accrescent.app" error domain.
+enum ErrorReason {
+  // The unspecified value.
+  ERROR_REASON_UNSPECIFIED = 0;
+
+  // A resource required for the operation could not be found.
+  ERROR_REASON_RESOURCE_NOT_FOUND = 1;
+
+  // A resource limit would be exceeded by performing the operation.
+  ERROR_REASON_RESOURCE_LIMIT_EXCEEDED = 2;
+
+  // A rate limit would be exceeded by performing the operation.
+  ERROR_REASON_RATE_LIMIT_EXCEEDED = 3;
+
+  // The caller does not have sufficient permission to perform the operation.
+  ERROR_REASON_INSUFFICIENT_PERMISSION = 4;
+
+  // The provided request data is invalid.
+  ERROR_REASON_INVALID_REQUEST = 5;
+
+  // The resource the operation would modify is immutable.
+  ERROR_REASON_RESOURCE_IMMUTABLE = 6;
+
+  // The operation cannot occur on the resource because the resource is
+  // incomplete.
+  ERROR_REASON_RESOURCE_INCOMPLETE = 7;
+
+  // The resource to be submitted is already submitted.
+  ERROR_REASON_ALREADY_SUBMITTED = 8;
+
+  // The operation would cause a conflict with another resource.
+  ERROR_REASON_RESOURCE_CONFLICT = 9;
+
+  // There is no reviewer or publisher available to assign.
+  ERROR_REASON_ASSIGNEE_UNAVAILABLE = 10;
+
+  // A resource with the requested ID already exists.
+  ERROR_REASON_ALREADY_EXISTS = 11;
+
+  // Authentication credentials were expected, but not provided.
+  ERROR_REASON_NO_CREDENTIALS = 12;
+
+  // The user has been authenticated via a third party, but has not yet
+  // registered an Accrescent account.
+  ERROR_REASON_NOT_REGISTERED = 13;
+
+  // The resource to be published is already published.
+  ERROR_REASON_ALREADY_PUBLISHED = 14;
+
+  // The operation cannot occur because the resource is publishing.
+  ERROR_REASON_RESOURCE_PUBLISHING = 15;
+
+  // The operation cannot occur because the resource has been invalidated.
+  ERROR_REASON_RESOURCE_INVALIDATED = 16;
+
+  // The operation would cause a data constraint violation.
+  ERROR_REASON_CONSTRAINT_VIOLATION = 17;
+}
