@@ -71,4 +71,48 @@ enum ErrorReason {
 
   // The server encountered an internal error.
   ERROR_REASON_INTERNAL = 18;
+
+  // The uploaded file was not an image in the expected format.
+  ERROR_REASON_INVALID_IMAGE = 19;
+
+  // The uploaded image's dimensions do not meet policy requirements.
+  ERROR_REASON_INCORRECT_IMAGE_DIMENSIONS = 20;
+
+  // The uploaded package file is invalid.
+  ERROR_REASON_INVALID_PACKAGE = 21;
+
+  // The uploaded package is debuggable.
+  ERROR_REASON_PACKAGE_DEBUGGABLE = 22;
+
+  // The uploaded package's target SDK does not meet the minimum policy
+  // requirements.
+  ERROR_REASON_LOW_TARGET_SDK = 23;
+
+  // The uploaded package has 32-bit code but is missing corresponding 64-bit
+  // code.
+  ERROR_REASON_MISSING_64_BIT_CODE = 24;
+
+  // The uploaded package has not been signed with a modern signature scheme.
+  ERROR_REASON_NO_MODERN_SIGNATURE = 25;
+
+  // The uploaded package was signed with the debug signer.
+  ERROR_REASON_DEBUG_SIGNER = 26;
+
+  // The uploaded package was signed with multiple signers.
+  ERROR_REASON_MULTIPLE_SIGNERS = 27;
+
+  // The uploaded package is test-only.
+  ERROR_REASON_TEST_ONLY = 28;
+
+  // The uploaded edit's app ID does not match the app ID of its corresponding
+  // published app.
+  ERROR_REASON_APP_ID_MISMATCH = 29;
+
+  // The uploaded edit's version code is not more than the version code of its
+  // corresponding published app.
+  ERROR_REASON_NOT_AN_UPGRADE = 30;
+
+  // The uploaded edit's signing certificate does not match that of its
+  // corresponding published app.
+  ERROR_REASON_SIGNING_CERT_MISMATCH = 31;
 }
