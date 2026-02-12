@@ -68,4 +68,7 @@ enum ErrorReason {
 
   // The operation would cause a data constraint violation.
   ERROR_REASON_CONSTRAINT_VIOLATION = 17;
+
+  // The server encountered an internal error.
+  ERROR_REASON_INTERNAL = 18;
 }
