@@ -8,6 +8,8 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/create_app_draft_review_request.proto";
 import "accrescent/console/v1alpha1/create_app_draft_review_response.proto";
+import "accrescent/console/v1alpha1/create_app_edit_review_request.proto";
+import "accrescent/console/v1alpha1/create_app_edit_review_response.proto";
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
@@ -22,6 +24,15 @@ service ReviewService {
   rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse) {
     option (google.api.http) = {
       post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/reviews"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Reviews"};
+  }
+
+  // Reviews an app edit.
+  rpc CreateAppEditReview(CreateAppEditReviewRequest) returns (CreateAppEditReviewResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/reviews"
       body: "*"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Reviews"};

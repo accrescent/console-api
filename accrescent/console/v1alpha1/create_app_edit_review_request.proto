@@ -1,0 +1,35 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/rejection_reason.proto";
+import "buf/validate/validate.proto";
+
+option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Request defining parameters for creating an app edit review.
+message CreateAppEditReviewRequest {
+  // The ID of the app edit to create a review for.
+  string app_edit_id = 1 [(buf.validate.field).required = true];
+
+  // Whether the app edit should be approved. If false, it is rejected.
+  optional bool approved = 2 [(buf.validate.field).required = true];
+
+  // The list of reasons for rejection if the review is a rejection.
+  repeated RejectionReason rejection_reasons = 3;
+
+  option (buf.validate.message).cel = {
+    id: "rejection_reasons.present_iff_rejected"
+    message: "rejection reasons must be present if and only if review is a rejection"
+    expression:
+      "this.approved "
+      "? this.rejection_reasons.size() == 0 "
+      ": this.rejection_reasons.size() > 0"
+  };
+}
