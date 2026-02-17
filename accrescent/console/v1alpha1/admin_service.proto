@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2025 Logan Magee
+// SPDX-FileCopyrightText: © 2026 Logan Magee
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -6,6 +6,8 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
+import "accrescent/console/v1alpha1/create_publisher_request.proto";
+import "accrescent/console/v1alpha1/create_publisher_response.proto";
 import "accrescent/console/v1alpha1/create_reviewer_request.proto";
 import "accrescent/console/v1alpha1/create_reviewer_response.proto";
 import "google/api/annotations.proto";
@@ -15,14 +17,23 @@ option go_package = "golang.accrescent.app/genproto/console-api/accrescent/conso
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// Service providing RPCs for managing store reviewers.
-service ReviewerService {
+// Service providing RPCs for administrating the store.
+service AdminService {
+  // Creates a store publisher.
+  rpc CreatePublisher(CreatePublisherRequest) returns (CreatePublisherResponse) {
+    option (google.api.http) = {
+      post: "/grpc/accrescent.console.v1alpha1/publishers"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Admin"};
+  }
+
   // Creates a store reviewer.
   rpc CreateReviewer(CreateReviewerRequest) returns (CreateReviewerResponse) {
     option (google.api.http) = {
       post: "/grpc/accrescent.console.v1alpha1/reviewers"
       body: "*"
     };
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Reviewers"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Admin"};
   }
 }
