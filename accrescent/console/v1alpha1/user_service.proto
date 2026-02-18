@@ -8,6 +8,8 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/get_self_request.proto";
 import "accrescent/console/v1alpha1/get_self_response.proto";
+import "accrescent/console/v1alpha1/update_user_request.proto";
+import "accrescent/console/v1alpha1/update_user_response.proto";
 import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
@@ -20,6 +22,15 @@ service UserService {
   // Gets the user info for the currently authenticated user.
   rpc GetSelf(GetSelfRequest) returns (GetSelfResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/user"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Users"};
+  }
+
+  // Updates a user.
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
+    option (google.api.http) = {
+      patch: "/grpc/accrescent.console.v1alpha1/users/{user_id}"
+      body: "*"
+    };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Users"};
   }
 }

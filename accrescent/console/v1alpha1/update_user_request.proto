@@ -8,25 +8,28 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/user_role.proto";
 import "buf/validate/validate.proto";
+import "google/protobuf/field_mask.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// A console user.
-message User {
-  // The user's unique ID.
-  optional string id = 1 [(buf.validate.field).required = true];
-
-  // The user's email.
-  optional string email = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.email = true
-  ];
+// Request defining parameters for updating a user.
+message UpdateUserRequest {
+  // The ID of the user to update.
+  string user_id = 1 [(buf.validate.field).required = true];
 
   // The user's roles.
-  repeated UserRole roles = 3 [
+  repeated UserRole roles = 2 [
     (buf.validate.field).repeated.items.enum.not_in = 0,
     (buf.validate.field).repeated.unique = true
+  ];
+
+  // The list of fields to update.
+  //
+  // Required to enforce forward-compatible use by clients.
+  google.protobuf.FieldMask update_mask = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).field_mask.in = "roles"
   ];
 }

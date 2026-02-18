@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2025 Logan Magee
+// SPDX-FileCopyrightText: © 2026 Logan Magee
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -10,5 +10,14 @@ option go_package = "golang.accrescent.app/genproto/console-api/accrescent/conso
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// Response to creating a publisher.
-message CreatePublisherResponse {}
+// A user authorization role.
+enum UserRole {
+  // The unspecified value.
+  USER_ROLE_UNSPECIFIED = 0;
+
+  // An app reviewer.
+  USER_ROLE_REVIEWER = 1;
+
+  // An app publisher.
+  USER_ROLE_PUBLISHER = 2;
+}
