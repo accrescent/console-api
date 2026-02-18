@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2025 Logan Magee
+// SPDX-FileCopyrightText: © 2026 Logan Magee
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -6,15 +6,14 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
-import "accrescent/console/v1alpha1/user.proto";
 import "buf/validate/validate.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
-// Response to getting the currently authenticated user.
-message GetSelfResponse {
-  // The currently authenticated user.
-  User user = 1 [(buf.validate.field).required = true];
+// A console user.
+message User {
+  // The user's unique ID.
+  optional string id = 1 [(buf.validate.field).required = true];
 }
