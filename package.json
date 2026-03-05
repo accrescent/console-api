@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "gen:sdks": "openapi-generator-cli generate"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.30.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.20.0",
+    "generators": {
+      "angular": {
+        "additionalProperties": {
+          "disallowAdditionalPropertiesIfNotPresent": false,
+          "enumUnknownDefaultCase": true,
+          "licenseName": "Apache-2.0",
+          "ngVersion": "20.0.0",
+          "npmName": "@accrescent/console-client-sdk-angular",
+          "npmVersion": "0.0.0",
+          "supportsES6": true
+        },
+        "generatorName": "typescript-angular",
+        "gitRepoId": "console-api",
+        "gitUserId": "accrescent",
+        "inputSpec": "./gen/openapi/openapi.swagger.json",
+        "output": "./generated_sdks/angular"
+      }
+    }
+  }
+}

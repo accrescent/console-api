@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: © 2026 Logan Magee
+#
+# SPDX-License-Identifier: Apache-2.0
+
+version: v2
+clean: true
+plugins:
+  - remote: buf.build/grpc-ecosystem/openapiv2
+    out: gen/openapi
+    opt:
+      - allow_merge=true
+      - merge_file_name=openapi

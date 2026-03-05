@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: © 2026 Logan Magee
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish-sdks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: bufbuild/buf-action@v1
+        with:
+          setup_only: true
+      - run: buf generate --template buf.gen.openapi.yaml
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          check-latest: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+          check-latest: true
+      - run: npm ci
+      - run: npm run gen:sdks
+      - run: npm install
+        working-directory: generated_sdks/angular
+      - run: npm publish --access public
+        working-directory: generated_sdks/angular/dist
