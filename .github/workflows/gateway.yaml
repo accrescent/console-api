@@ -17,4 +17,4 @@ jobs:
       - uses: bufbuild/buf-action@v1
         with:
           setup_only: true
-      - run: buf generate
+      - run: buf generate --template buf.gen.gateway.yaml
