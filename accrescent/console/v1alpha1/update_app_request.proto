@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/field_mask.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
@@ -16,16 +17,23 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating a published app.
 message UpdateAppRequest {
   // The ID of the app to update.
-  string app_id = 1 [(buf.validate.field).required = true];
+  string app_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // Whether the app is publicly listed on the store.
-  optional bool publicly_listed = 2 [(buf.validate.field).required = true];
+  optional bool publicly_listed = 2 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The list of fields to update.
   //
   // Required to enforce forward-compatible use by clients.
   google.protobuf.FieldMask update_mask = 3 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     (buf.validate.field).field_mask.in = "publicly_listed"
   ];
 }

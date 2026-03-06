@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/field_mask.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
@@ -16,18 +17,25 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating an app edit.
 message UpdateAppEditRequest {
   // The ID of the app draft to update.
-  string app_edit_id = 1 [(buf.validate.field).required = true];
+  string app_edit_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The edit's default listing language.
   //
   // Required because no other fields are supported for update yet.
-  optional string default_listing_language = 2 [(buf.validate.field).required = true];
+  optional string default_listing_language = 2 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The list of fields to update.
   //
   // Required to enforce forward-compatible use by clients.
   google.protobuf.FieldMask update_mask = 3 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     (buf.validate.field).field_mask.in = "default_listing_language"
   ];
 }

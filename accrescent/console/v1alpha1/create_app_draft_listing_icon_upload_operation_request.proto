@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -16,8 +17,14 @@ option java_package = "app.accrescent.console.v1alpha1";
 // operation.
 message CreateAppDraftListingIconUploadOperationRequest {
   // The ID of the app draft to create an icon upload operation for.
-  string app_draft_id = 1 [(buf.validate.field).required = true];
+  string app_draft_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The language of the app listing to create an icon upload operation for.
-  string language = 2 [(buf.validate.field).required = true];
+  string language = 2 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 }

@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -15,8 +16,14 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for deleting an app edit listing.
 message DeleteAppEditListingRequest {
   // The ID of the app edit the listing is associated with.
-  string app_edit_id = 1 [(buf.validate.field).required = true];
+  string app_edit_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The BCP-47 language tag of the listing to delete.
-  string language = 2 [(buf.validate.field).required = true];
+  string language = 2 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 }

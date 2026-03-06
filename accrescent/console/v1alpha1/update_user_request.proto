@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/user_role.proto";
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 import "google/protobuf/field_mask.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
@@ -17,7 +18,10 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for updating a user.
 message UpdateUserRequest {
   // The ID of the user to update.
-  string user_id = 1 [(buf.validate.field).required = true];
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The user's roles.
   repeated UserRole roles = 2 [
@@ -30,6 +34,7 @@ message UpdateUserRequest {
   // Required to enforce forward-compatible use by clients.
   google.protobuf.FieldMask update_mask = 3 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     (buf.validate.field).field_mask.in = "roles"
   ];
 }

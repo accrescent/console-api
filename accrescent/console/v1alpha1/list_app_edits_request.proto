@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -15,7 +16,10 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for listing app edits.
 message ListAppEditsRequest {
   // The app containing the edits to list.
-  optional string app_id = 1 [(buf.validate.field).required = true];
+  optional string app_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The maximum number of app edits to return in the response. If unspecified,
   // defaults to 50. All requests with a higher page size will be capped to 50.

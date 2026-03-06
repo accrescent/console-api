@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "google/api/field_behavior.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -15,11 +16,15 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Request defining parameters for creating an app listing for an app draft.
 message CreateAppDraftListingRequest {
   // The app draft to create the app listing for.
-  string app_draft_id = 1 [(buf.validate.field).required = true];
+  string app_draft_id = 1 [
+    (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED
+  ];
 
   // The language of this listing's fields as a BCP-47 tag.
   string language = 2 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     // Supported languages are the same as those supported by Google Play. See
     // https://support.google.com/googleplay/android-developer/answer/9844778
     // for more details. If Play supports a language not listed here, please
@@ -116,6 +121,7 @@ message CreateAppDraftListingRequest {
   // (e.g. "SecureChat - Secure Texting").
   optional string name = 3 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     (buf.validate.field).string.min_len = 3,
     (buf.validate.field).string.max_len = 30
   ];
@@ -124,6 +130,7 @@ message CreateAppDraftListingRequest {
   // spaces.
   optional string short_description = 4 [
     (buf.validate.field).required = true,
+    (google.api.field_behavior) = REQUIRED,
     (buf.validate.field).string.min_len = 3,
     (buf.validate.field).string.max_len = 80
   ];
