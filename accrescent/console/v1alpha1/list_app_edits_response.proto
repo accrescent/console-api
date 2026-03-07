@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/app_edit.proto";
 import "buf/validate/validate.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -25,4 +26,8 @@ message ListAppEditsResponse {
   // An opaque token which, if passed to another invocation of ListAppEdits,
   // will return the next page of app edits.
   optional string next_page_token = 2;
+
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
+    required: ["appEdits"]
+  };
 }

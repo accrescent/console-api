@@ -7,6 +7,7 @@ syntax = "proto3";
 package accrescent.console.v1alpha1;
 
 import "buf/validate/validate.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -28,4 +29,13 @@ message AppPackage {
 
   // The app package's target SDK.
   optional uint64 target_sdk = 4 [(buf.validate.field).required = true];
+
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
+    required: [
+      "appId",
+      "versionCode",
+      "versionName",
+      "targetSdk"
+    ]
+  };
 }

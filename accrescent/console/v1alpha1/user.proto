@@ -8,6 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "accrescent/console/v1alpha1/user_role.proto";
 import "buf/validate/validate.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -29,4 +30,12 @@ message User {
     (buf.validate.field).repeated.items.enum.not_in = 0,
     (buf.validate.field).repeated.unique = true
   ];
+
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
+    required: [
+      "id",
+      "email",
+      "roles"
+    ]
+  };
 }

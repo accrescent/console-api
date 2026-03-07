@@ -9,6 +9,7 @@ package accrescent.console.v1alpha1;
 import "accrescent/console/v1alpha1/rejection_reason.proto";
 import "buf/validate/validate.proto";
 import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -38,5 +39,9 @@ message CreateAppDraftReviewRequest {
       "this.approved "
       "? this.rejection_reasons.size() == 0 "
       ": this.rejection_reasons.size() > 0"
+  };
+
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
+    required: ["rejectionReasons"]
   };
 }
