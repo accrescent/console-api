@@ -8,7 +8,7 @@ package accrescent.console.v1alpha1;
 
 import "google/longrunning/operations.proto";
 
-option go_package = "golang.accrescent.app/genproto/console-api/accrescent/console/v1alpha1;console";
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
