@@ -11,7 +11,7 @@
           "licenseName": "Apache-2.0",
           "ngVersion": "20.0.0",
           "npmName": "@accrescent/console-client-sdk-angular",
-          "npmVersion": "0.1.0",
+          "npmVersion": "0.2.0",
           "supportsES6": true
         },
         "generatorName": "typescript-angular",
