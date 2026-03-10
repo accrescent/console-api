@@ -6,28 +6,18 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
-import "buf/validate/validate.proto";
-import "google/api/field_behavior.proto";
-
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1alpha1";
 
 // Request defining parameters for listing organizations.
 message ListOrganizationsRequest {
-  // The user to list organizations for. The response will contain the organizations this user is a
-  // member of.
-  optional string user_id = 1 [
-    (buf.validate.field).required = true,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
   // The maximum number of organizations to return in the response. If
   // unspecified, defaults to 50. All requests with a higher page size will be
   // capped to 50.
-  optional uint32 page_size = 2;
+  optional uint32 page_size = 1;
 
   // An opaque page continuation token returned in a previous
   // ListOrganizationsResponse. If unspecified, the first page is returned.
-  optional string page_token = 3;
+  optional string page_token = 2;
 }
