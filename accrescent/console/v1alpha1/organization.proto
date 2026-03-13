@@ -24,11 +24,19 @@ message Organization {
   // The current number of published apps in this organization.
   optional uint32 published_app_count = 3 [(buf.validate.field).required = true];
 
+  // The maximum number of active app drafts allowed to exist under this organization.
+  optional uint32 active_app_draft_limit = 4 [(buf.validate.field).required = true];
+
+  // The current number of active app drafts in this organization.
+  optional uint32 active_app_draft_count = 5 [(buf.validate.field).required = true];
+
   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
     required: [
       "id",
       "published_app_limit",
-      "published_app_count"
+      "published_app_count",
+      "active_app_draft_limit",
+      "active_app_draft_count"
     ]
   };
 }
