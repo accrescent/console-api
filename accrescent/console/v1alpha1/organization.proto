@@ -18,7 +18,13 @@ message Organization {
   // The organization's unique ID.
   optional string id = 1 [(buf.validate.field).required = true];
 
+  // The maximum number of published apps allowed to exist under this organization.
+  optional uint32 published_app_limit = 2 [(buf.validate.field).required = true];
+
   option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
-    required: ["id"]
+    required: [
+      "id",
+      "published_app_limit"
+    ]
   };
 }
