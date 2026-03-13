@@ -6,6 +6,8 @@ syntax = "proto3";
 
 package accrescent.console.v1alpha1;
 
+import "accrescent/console/v1alpha1/get_organization_request.proto";
+import "accrescent/console/v1alpha1/get_organization_response.proto";
 import "accrescent/console/v1alpha1/list_organizations_request.proto";
 import "accrescent/console/v1alpha1/list_organizations_response.proto";
 import "google/api/annotations.proto";
@@ -17,6 +19,12 @@ option java_package = "app.accrescent.console.v1alpha1";
 
 // Service providing RPCs for managing organizations.
 service OrganizationService {
+  // Gets an organization.
+  rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
+    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/organizations/{organization_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Organizations"};
+  }
+
   // Lists organizations.
   rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/organizations"};

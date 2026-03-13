@@ -1,0 +1,25 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1alpha1;
+
+import "accrescent/console/v1alpha1/organization.proto";
+import "buf/validate/validate.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1alpha1";
+
+// Response to getting an organization.
+message GetOrganizationResponse {
+  // The requested organization.
+  Organization organization = 1 [(buf.validate.field).required = true];
+
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema).json_schema = {
+    required: ["organization"]
+  };
+}
