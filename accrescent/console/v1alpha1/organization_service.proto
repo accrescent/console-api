@@ -11,7 +11,6 @@ import "accrescent/console/v1alpha1/get_organization_response.proto";
 import "accrescent/console/v1alpha1/list_organizations_request.proto";
 import "accrescent/console/v1alpha1/list_organizations_response.proto";
 import "google/api/annotations.proto";
-import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -22,12 +21,10 @@ service OrganizationService {
   // Gets an organization.
   rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/organizations/{organization_id}"};
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Organizations"};
   }
 
   // Lists organizations.
   rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/organizations"};
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Organizations"};
   }
 }

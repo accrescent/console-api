@@ -11,7 +11,6 @@ import "accrescent/console/v1alpha1/get_self_response.proto";
 import "accrescent/console/v1alpha1/update_user_request.proto";
 import "accrescent/console/v1alpha1/update_user_response.proto";
 import "google/api/annotations.proto";
-import "protoc-gen-openapiv2/options/annotations.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -22,7 +21,6 @@ service UserService {
   // Gets the user info for the currently authenticated user.
   rpc GetSelf(GetSelfRequest) returns (GetSelfResponse) {
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/user"};
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Users"};
   }
 
   // Updates a user.
@@ -31,6 +29,5 @@ service UserService {
       patch: "/grpc/accrescent.console.v1alpha1/users/{user_id}"
       body: "*"
     };
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {tags: "Users"};
   }
 }
