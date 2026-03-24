@@ -11,6 +11,7 @@ import "accrescent/console/v1alpha1/create_app_draft_review_response.proto";
 import "accrescent/console/v1alpha1/create_app_edit_review_request.proto";
 import "accrescent/console/v1alpha1/create_app_edit_review_response.proto";
 import "google/api/annotations.proto";
+import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -19,6 +20,8 @@ option java_package = "app.accrescent.console.v1alpha1";
 // Service providing RPCs for managing reviews on items submitted to the app
 // store
 service ReviewService {
+  option (google.api.default_host) = "console-api.accrescent.app";
+
   // Reviews an app draft.
   rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse) {
     option (google.api.http) = {

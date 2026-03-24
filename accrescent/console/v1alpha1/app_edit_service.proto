@@ -29,6 +29,7 @@ import "accrescent/console/v1alpha1/submit_app_edit_response.proto";
 import "accrescent/console/v1alpha1/update_app_edit_request.proto";
 import "accrescent/console/v1alpha1/update_app_edit_response.proto";
 import "google/api/annotations.proto";
+import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1alpha1;console";
 option java_multiple_files = true;
@@ -36,6 +37,8 @@ option java_package = "app.accrescent.console.v1alpha1";
 
 // Service providing RPCs for managing app edits.
 service AppEditService {
+  option (google.api.default_host) = "console-api.accrescent.app";
+
   // Creates a new app edit.
   rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {
     option (google.api.http) = {
