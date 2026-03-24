@@ -21,7 +21,10 @@ message UpdateUserRequest {
 
   // The user's roles.
   repeated UserRole roles = 2 [
-    (buf.validate.field).repeated.items.enum.not_in = 0,
+    (buf.validate.field).repeated.items.enum = {
+      defined_only: true
+      not_in: [0]
+    },
     (buf.validate.field).repeated.unique = true
   ];
 
