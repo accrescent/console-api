@@ -21,7 +21,12 @@ message UpdateAppEditRequest {
   // The edit's default listing language.
   //
   // Required because no other fields are supported for update yet.
-  optional string default_listing_language = 2 [(buf.validate.field).required = true];
+  optional string default_listing_language = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string = {
+      in: ["en-US"]
+    }
+  ];
 
   // The list of fields to update.
   //
