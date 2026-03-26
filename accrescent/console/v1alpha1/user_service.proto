@@ -23,6 +23,7 @@ service UserService {
 
   // Gets the user info for the currently authenticated user.
   rpc GetSelf(GetSelfRequest) returns (GetSelfResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/user"};
   }
 

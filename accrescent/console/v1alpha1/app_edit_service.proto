@@ -49,11 +49,13 @@ service AppEditService {
 
   // Gets an app edit.
   rpc GetAppEdit(GetAppEditRequest) returns (GetAppEditResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
   }
 
   // Lists app edits.
   rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits"};
   }
 
@@ -67,6 +69,7 @@ service AppEditService {
 
   // Gets an app edit's download info.
   rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/download_info"};
   }
 
@@ -80,6 +83,7 @@ service AppEditService {
 
   // Submits an app edit.
   rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse) {
+    option idempotency_level = IDEMPOTENT;
     option (google.api.http) = {
       post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}:submit"
       body: "*"
@@ -88,6 +92,7 @@ service AppEditService {
 
   // Deletes an app edit.
   rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse) {
+    option idempotency_level = IDEMPOTENT;
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}"};
   }
 
@@ -106,6 +111,7 @@ service AppEditService {
 
   // Deletes an existing app edit listing.
   rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse) {
+    option idempotency_level = IDEMPOTENT;
     option (google.api.http) = {delete: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/listings/{language}"};
   }
 }
