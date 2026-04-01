@@ -1,0 +1,37 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/get_self_request.proto";
+import "accrescent/console/v1/get_self_response.proto";
+import "accrescent/console/v1/update_user_request.proto";
+import "accrescent/console/v1/update_user_response.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Service providing RPCs for managing users.
+service UserService {
+  option (google.api.default_host) = "console-api.accrescent.app";
+
+  // Gets the user info for the currently authenticated user.
+  rpc GetSelf(GetSelfRequest) returns (GetSelfResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {get: "/v1alpha/user"};
+  }
+
+  // Updates a user.
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {
+    option (google.api.http) = {
+      patch: "/v1alpha/users/{user_id}"
+      body: "*"
+    };
+  }
+}

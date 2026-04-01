@@ -1,0 +1,14 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Request defining parameters for getting the currently authenticated user.
+message GetSelfRequest {}

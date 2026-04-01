@@ -1,0 +1,19 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Request defining parameters for getting an app edit's download info.
+message GetAppEditDownloadInfoRequest {
+  // The ID of the app edit to get download info for.
+  string app_edit_id = 1 [(buf.validate.field).required = true];
+}

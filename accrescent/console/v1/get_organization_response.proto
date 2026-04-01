@@ -1,0 +1,20 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/organization.proto";
+import "buf/validate/validate.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Response to getting an organization.
+message GetOrganizationResponse {
+  // The requested organization.
+  Organization organization = 1 [(buf.validate.field).required = true];
+}

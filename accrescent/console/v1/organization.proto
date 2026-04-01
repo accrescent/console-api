@@ -1,0 +1,31 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// An organization of users.
+message Organization {
+  // The organization's unique ID.
+  optional string id = 1 [(buf.validate.field).required = true];
+
+  // The maximum number of published apps allowed to exist under this organization.
+  optional uint32 published_app_limit = 2 [(buf.validate.field).required = true];
+
+  // The current number of published apps in this organization.
+  optional uint32 published_app_count = 3 [(buf.validate.field).required = true];
+
+  // The maximum number of active app drafts allowed to exist under this organization.
+  optional uint32 active_app_draft_limit = 4 [(buf.validate.field).required = true];
+
+  // The current number of active app drafts in this organization.
+  optional uint32 active_app_draft_count = 5 [(buf.validate.field).required = true];
+}

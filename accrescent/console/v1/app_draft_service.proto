@@ -1,0 +1,139 @@
+// SPDX-FileCopyrightText: © 2025 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/create_app_draft_listing_icon_upload_operation_request.proto";
+import "accrescent/console/v1/create_app_draft_listing_icon_upload_operation_response.proto";
+import "accrescent/console/v1/create_app_draft_listing_request.proto";
+import "accrescent/console/v1/create_app_draft_listing_response.proto";
+import "accrescent/console/v1/create_app_draft_request.proto";
+import "accrescent/console/v1/create_app_draft_response.proto";
+import "accrescent/console/v1/create_app_draft_upload_operation_request.proto";
+import "accrescent/console/v1/create_app_draft_upload_operation_response.proto";
+import "accrescent/console/v1/delete_app_draft_listing_request.proto";
+import "accrescent/console/v1/delete_app_draft_listing_response.proto";
+import "accrescent/console/v1/delete_app_draft_request.proto";
+import "accrescent/console/v1/delete_app_draft_response.proto";
+import "accrescent/console/v1/get_app_draft_download_info_request.proto";
+import "accrescent/console/v1/get_app_draft_download_info_response.proto";
+import "accrescent/console/v1/get_app_draft_listing_icon_download_info_request.proto";
+import "accrescent/console/v1/get_app_draft_listing_icon_download_info_response.proto";
+import "accrescent/console/v1/get_app_draft_request.proto";
+import "accrescent/console/v1/get_app_draft_response.proto";
+import "accrescent/console/v1/list_app_drafts_request.proto";
+import "accrescent/console/v1/list_app_drafts_response.proto";
+import "accrescent/console/v1/publish_app_draft_request.proto";
+import "accrescent/console/v1/publish_app_draft_response.proto";
+import "accrescent/console/v1/submit_app_draft_request.proto";
+import "accrescent/console/v1/submit_app_draft_response.proto";
+import "accrescent/console/v1/update_app_draft_request.proto";
+import "accrescent/console/v1/update_app_draft_response.proto";
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Service providing RPCs for managing app drafts.
+service AppDraftService {
+  option (google.api.default_host) = "console-api.accrescent.app";
+
+  // Creates a new app draft.
+  rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts"
+      body: "*"
+    };
+  }
+
+  // Gets an app draft.
+  rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {get: "/v1alpha/app_drafts/{app_draft_id}"};
+  }
+
+  // Lists app drafts.
+  rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {get: "/v1alpha/app_drafts"};
+  }
+
+  // Creates an app draft upload operation.
+  rpc CreateAppDraftUploadOperation(CreateAppDraftUploadOperationRequest) returns (CreateAppDraftUploadOperationResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts/{app_draft_id}/upload_operations"
+      body: "*"
+    };
+  }
+
+  // Gets an app draft's download info.
+  rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {get: "/v1alpha/app_drafts/{app_draft_id}/download_info"};
+  }
+
+  // Updates an app draft.
+  rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse) {
+    option (google.api.http) = {
+      patch: "/v1alpha/app_drafts/{app_draft_id}"
+      body: "*"
+    };
+  }
+
+  // Submits an app draft for review.
+  rpc SubmitAppDraft(SubmitAppDraftRequest) returns (SubmitAppDraftResponse) {
+    option idempotency_level = IDEMPOTENT;
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts/{app_draft_id}:submit"
+      body: "*"
+    };
+  }
+
+  // Deletes an existing app draft.
+  rpc DeleteAppDraft(DeleteAppDraftRequest) returns (DeleteAppDraftResponse) {
+    option idempotency_level = IDEMPOTENT;
+    option (google.api.http) = {delete: "/v1alpha/app_drafts/{app_draft_id}"};
+  }
+
+  // Creates a new app listing for an app draft.
+  rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts/{app_draft_id}/listings/{language}"
+      body: "*"
+    };
+  }
+
+  // Creates an app draft listing icon upload operation.
+  rpc CreateAppDraftListingIconUploadOperation(CreateAppDraftListingIconUploadOperationRequest) returns (CreateAppDraftListingIconUploadOperationResponse) {
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts/{app_draft_id}/listings/{language}/icon/upload_operations"
+      body: "*"
+    };
+  }
+
+  // Gets an app draft listing icon's download info.
+  rpc GetAppDraftListingIconDownloadInfo(GetAppDraftListingIconDownloadInfoRequest) returns (GetAppDraftListingIconDownloadInfoResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {get: "/v1alpha/app_drafts/{app_draft_id}/listings/{language}/icon/download_info"};
+  }
+
+  // Deletes an existing app draft listing.
+  rpc DeleteAppDraftListing(DeleteAppDraftListingRequest) returns (DeleteAppDraftListingResponse) {
+    option idempotency_level = IDEMPOTENT;
+    option (google.api.http) = {delete: "/v1alpha/app_drafts/{app_draft_id}/listings/{language}"};
+  }
+
+  // Publishes an app draft to the app store.
+  rpc PublishAppDraft(PublishAppDraftRequest) returns (PublishAppDraftResponse) {
+    option idempotency_level = IDEMPOTENT;
+    option (google.api.http) = {
+      post: "/v1alpha/app_drafts/{app_draft_id}:publish"
+      body: "*"
+    };
+  }
+}
