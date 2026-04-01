@@ -25,7 +25,7 @@ service ReviewService {
   // Reviews an app draft.
   rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse) {
     option (google.api.http) = {
-      post: "/grpc/accrescent.console.v1alpha1/app_drafts/{app_draft_id}/reviews"
+      post: "/v1alpha/app_drafts/{app_draft_id}/reviews"
       body: "*"
     };
   }
@@ -33,7 +33,7 @@ service ReviewService {
   // Reviews an app edit.
   rpc CreateAppEditReview(CreateAppEditReviewRequest) returns (CreateAppEditReviewResponse) {
     option (google.api.http) = {
-      post: "/grpc/accrescent.console.v1alpha1/app_edits/{app_edit_id}/reviews"
+      post: "/v1alpha/app_edits/{app_edit_id}/reviews"
       body: "*"
     };
   }

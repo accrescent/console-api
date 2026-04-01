@@ -26,19 +26,19 @@ service AppService {
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"};
+    option (google.api.http) = {get: "/v1alpha/apps/{app_id}"};
   }
 
   // Lists published apps.
   rpc ListApps(ListAppsRequest) returns (ListAppsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/grpc/accrescent.console.v1alpha1/apps"};
+    option (google.api.http) = {get: "/v1alpha/apps"};
   }
 
   // Updates a published app.
   rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse) {
     option (google.api.http) = {
-      patch: "/grpc/accrescent.console.v1alpha1/apps/{app_id}"
+      patch: "/v1alpha/apps/{app_id}"
       body: "*"
     };
   }
