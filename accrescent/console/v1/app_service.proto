@@ -26,19 +26,25 @@ service AppService {
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/v1/apps/{app_id}"};
+    option (google.api.http) = {
+      post: "/v1/apps/{app_id}:get"
+      body: "*"
+    };
   }
 
   // Lists published apps.
   rpc ListApps(ListAppsRequest) returns (ListAppsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/v1/apps"};
+    option (google.api.http) = {
+      post: "/v1/apps:list"
+      body: "*"
+    };
   }
 
   // Updates a published app.
   rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse) {
     option (google.api.http) = {
-      patch: "/v1/apps/{app_id}"
+      post: "/v1/apps/{app_id}:update"
       body: "*"
     };
   }
