@@ -24,12 +24,12 @@ service OrganizationService {
   // Gets an organization.
   rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/v1alpha/organizations/{organization_id}"};
+    option (google.api.http) = {get: "/v1/organizations/{organization_id}"};
   }
 
   // Lists organizations.
   rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {get: "/v1alpha/organizations"};
+    option (google.api.http) = {get: "/v1/organizations"};
   }
 }
