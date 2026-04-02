@@ -15,7 +15,7 @@ option java_package = "app.accrescent.console.v1";
 // An app package.
 message AppPackage {
   // The app package's Android application ID.
-  optional string app_id = 1 [(buf.validate.field).required = true];
+  optional string android_application_id = 1 [(buf.validate.field).required = true];
 
   // The app package's version code.
   optional uint64 version_code = 2 [
