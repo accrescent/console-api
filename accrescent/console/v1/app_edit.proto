@@ -20,7 +20,7 @@ message AppEdit {
   optional string id = 1 [(buf.validate.field).required = true];
 
   // The timestamp at which the app edit was created.
-  google.protobuf.Timestamp created_at = 2 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp create_time = 2 [(buf.validate.field).required = true];
 
   // The app edit's default listing language.
   optional string default_listing_language = 3 [(buf.validate.field).required = true];
@@ -29,8 +29,8 @@ message AppEdit {
   AppPackage app_package = 4 [(buf.validate.field).required = true];
 
   // The timestamp at which the app edit has been submitted, if applicable.
-  google.protobuf.Timestamp submitted_at = 5;
+  google.protobuf.Timestamp submit_time = 5;
 
   // The timestamp at which the app edit has been published, if applicable.
-  google.protobuf.Timestamp published_at = 6;
+  google.protobuf.Timestamp publish_time = 6;
 }
