@@ -8,6 +8,8 @@ package accrescent.console.v1;
 
 import "accrescent/console/v1/get_app_request.proto";
 import "accrescent/console/v1/get_app_response.proto";
+import "accrescent/console/v1/list_app_listings_request.proto";
+import "accrescent/console/v1/list_app_listings_response.proto";
 import "accrescent/console/v1/list_apps_request.proto";
 import "accrescent/console/v1/list_apps_response.proto";
 import "accrescent/console/v1/update_app_request.proto";
@@ -37,6 +39,15 @@ service AppService {
     option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {
       post: "/v1/apps:list"
+      body: "*"
+    };
+  }
+
+  // Lists app listings.
+  rpc ListAppListings(ListAppListingsRequest) returns (ListAppListingsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {
+      post: "/v1/app_listings:list"
       body: "*"
     };
   }

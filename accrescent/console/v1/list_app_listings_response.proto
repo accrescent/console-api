@@ -1,0 +1,28 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/app_listing.proto";
+import "buf/validate/validate.proto";
+
+option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Response to listing app listings.
+message ListAppListingsResponse {
+  // The app listings matching the request parameters.
+  repeated AppListing app_listings = 1 [(buf.validate.field).cel = {
+    id: "app_listings.have_unique_languages"
+    message: "app listings must have unique languages"
+    expression: "this.map(l, l.language).unique()"
+  }];
+
+  // An opaque token which, if passed to another invocation of ListAppListings,
+  // will return the next page of app listings.
+  optional string next_page_token = 2;
+}

@@ -20,6 +20,8 @@ import "accrescent/console/v1/download_app_draft_request.proto";
 import "accrescent/console/v1/download_app_draft_response.proto";
 import "accrescent/console/v1/get_app_draft_request.proto";
 import "accrescent/console/v1/get_app_draft_response.proto";
+import "accrescent/console/v1/list_app_draft_listings_request.proto";
+import "accrescent/console/v1/list_app_draft_listings_response.proto";
 import "accrescent/console/v1/list_app_drafts_request.proto";
 import "accrescent/console/v1/list_app_drafts_response.proto";
 import "accrescent/console/v1/publish_app_draft_request.proto";
@@ -116,6 +118,15 @@ service AppDraftService {
   rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {
     option (google.api.http) = {
       post: "/v1/app_draft_listings:create"
+      body: "*"
+    };
+  }
+
+  // Lists app draft listings.
+  rpc ListAppDraftListings(ListAppDraftListingsRequest) returns (ListAppDraftListingsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {
+      post: "/v1/app_draft_listings:list"
       body: "*"
     };
   }

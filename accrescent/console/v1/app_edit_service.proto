@@ -18,6 +18,8 @@ import "accrescent/console/v1/download_app_edit_request.proto";
 import "accrescent/console/v1/download_app_edit_response.proto";
 import "accrescent/console/v1/get_app_edit_request.proto";
 import "accrescent/console/v1/get_app_edit_response.proto";
+import "accrescent/console/v1/list_app_edit_listings_request.proto";
+import "accrescent/console/v1/list_app_edit_listings_response.proto";
 import "accrescent/console/v1/list_app_edits_request.proto";
 import "accrescent/console/v1/list_app_edits_response.proto";
 import "accrescent/console/v1/submit_app_edit_request.proto";
@@ -112,6 +114,15 @@ service AppEditService {
   rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse) {
     option (google.api.http) = {
       post: "/v1/app_edit_listings:create"
+      body: "*"
+    };
+  }
+
+  // Lists app edit listings.
+  rpc ListAppEditListings(ListAppEditListingsRequest) returns (ListAppEditListingsResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (google.api.http) = {
+      post: "/v1/app_edit_listings:list"
       body: "*"
     };
   }
