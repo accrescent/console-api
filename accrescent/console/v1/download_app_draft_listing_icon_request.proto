@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: © 2025 Logan Magee
+// SPDX-FileCopyrightText: © 2026 Logan Magee
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -12,8 +12,8 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Request defining parameters for getting an app draft's download info.
-message GetAppDraftDownloadInfoRequest {
-  // The ID of the app draft to get download info for.
-  string app_draft_id = 1 [(buf.validate.field).required = true];
+// Request defining parameters for downloading an app draft listing icon.
+message DownloadAppDraftListingIconRequest {
+  // The ID of the app draft listing to download the icon for.
+  string app_draft_listing_id = 1 [(buf.validate.field).required = true];
 }

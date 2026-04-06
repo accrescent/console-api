@@ -6,20 +6,16 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
-import "accrescent/console/v1/create_app_edit_listing_icon_upload_operation_request.proto";
-import "accrescent/console/v1/create_app_edit_listing_icon_upload_operation_response.proto";
 import "accrescent/console/v1/create_app_edit_listing_request.proto";
 import "accrescent/console/v1/create_app_edit_listing_response.proto";
 import "accrescent/console/v1/create_app_edit_request.proto";
 import "accrescent/console/v1/create_app_edit_response.proto";
-import "accrescent/console/v1/create_app_edit_upload_operation_request.proto";
-import "accrescent/console/v1/create_app_edit_upload_operation_response.proto";
 import "accrescent/console/v1/delete_app_edit_listing_request.proto";
 import "accrescent/console/v1/delete_app_edit_listing_response.proto";
 import "accrescent/console/v1/delete_app_edit_request.proto";
 import "accrescent/console/v1/delete_app_edit_response.proto";
-import "accrescent/console/v1/get_app_edit_download_info_request.proto";
-import "accrescent/console/v1/get_app_edit_download_info_response.proto";
+import "accrescent/console/v1/download_app_edit_request.proto";
+import "accrescent/console/v1/download_app_edit_response.proto";
 import "accrescent/console/v1/get_app_edit_request.proto";
 import "accrescent/console/v1/get_app_edit_response.proto";
 import "accrescent/console/v1/list_app_edits_request.proto";
@@ -28,6 +24,10 @@ import "accrescent/console/v1/submit_app_edit_request.proto";
 import "accrescent/console/v1/submit_app_edit_response.proto";
 import "accrescent/console/v1/update_app_edit_request.proto";
 import "accrescent/console/v1/update_app_edit_response.proto";
+import "accrescent/console/v1/upload_app_edit_listing_icon_request.proto";
+import "accrescent/console/v1/upload_app_edit_listing_icon_response.proto";
+import "accrescent/console/v1/upload_app_edit_request.proto";
+import "accrescent/console/v1/upload_app_edit_response.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 
@@ -42,7 +42,7 @@ service AppEditService {
   // Creates a new app edit.
   rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {
     option (google.api.http) = {
-      post: "/v1/apps/{app_id}/edits:create"
+      post: "/v1/app_edits:create"
       body: "*"
     };
   }
@@ -65,19 +65,19 @@ service AppEditService {
     };
   }
 
-  // Creates an app edit upload operation.
-  rpc CreateAppEditUploadOperation(CreateAppEditUploadOperationRequest) returns (CreateAppEditUploadOperationResponse) {
+  // Uploads an app edit APK set.
+  rpc UploadAppEdit(UploadAppEditRequest) returns (UploadAppEditResponse) {
     option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/upload_operations:create"
+      post: "/v1/app_edits/{app_edit_id}:upload"
       body: "*"
     };
   }
 
-  // Gets an app edit's download info.
-  rpc GetAppEditDownloadInfo(GetAppEditDownloadInfoRequest) returns (GetAppEditDownloadInfoResponse) {
+  // Downloads an app edit.
+  rpc DownloadAppEdit(DownloadAppEditRequest) returns (DownloadAppEditResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/download_info:get"
+      post: "/v1/app_edits/{app_edit_id}:download"
       body: "*"
     };
   }
@@ -111,15 +111,15 @@ service AppEditService {
   // Creates a new app listing for an app edit.
   rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse) {
     option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/listings/{language}:create"
+      post: "/v1/app_edit_listings:create"
       body: "*"
     };
   }
 
-  // Creates an app edit listing icon upload operation.
-  rpc CreateAppEditListingIconUploadOperation(CreateAppEditListingIconUploadOperationRequest) returns (CreateAppEditListingIconUploadOperationResponse) {
+  // Uploads an app edit listing icon.
+  rpc UploadAppEditListingIcon(UploadAppEditListingIconRequest) returns (UploadAppEditListingIconResponse) {
     option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/listings/{language}/icon/upload_operations:create"
+      post: "/v1/app_edit_listings/{app_edit_listing_id}/icon:upload"
       body: "*"
     };
   }
@@ -128,7 +128,7 @@ service AppEditService {
   rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse) {
     option idempotency_level = IDEMPOTENT;
     option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/listings/{language}:delete"
+      post: "/v1/app_edit_listings/{app_edit_listing_id}:delete"
       body: "*"
     };
   }

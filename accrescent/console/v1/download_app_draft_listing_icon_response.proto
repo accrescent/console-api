@@ -12,8 +12,8 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Response to getting an app draft listing icon's download info.
-message GetAppDraftListingIconDownloadInfoResponse {
+// Response to downloading an app draft listing icon.
+message DownloadAppDraftListingIconResponse {
   // The URL of the icon which can be retrieved with a simple HTTP GET.
   optional string icon_url = 1 [
     (buf.validate.field).required = true,

@@ -6,22 +6,18 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
-import "accrescent/console/v1/create_app_draft_listing_icon_upload_operation_request.proto";
-import "accrescent/console/v1/create_app_draft_listing_icon_upload_operation_response.proto";
 import "accrescent/console/v1/create_app_draft_listing_request.proto";
 import "accrescent/console/v1/create_app_draft_listing_response.proto";
 import "accrescent/console/v1/create_app_draft_request.proto";
 import "accrescent/console/v1/create_app_draft_response.proto";
-import "accrescent/console/v1/create_app_draft_upload_operation_request.proto";
-import "accrescent/console/v1/create_app_draft_upload_operation_response.proto";
 import "accrescent/console/v1/delete_app_draft_listing_request.proto";
 import "accrescent/console/v1/delete_app_draft_listing_response.proto";
 import "accrescent/console/v1/delete_app_draft_request.proto";
 import "accrescent/console/v1/delete_app_draft_response.proto";
-import "accrescent/console/v1/get_app_draft_download_info_request.proto";
-import "accrescent/console/v1/get_app_draft_download_info_response.proto";
-import "accrescent/console/v1/get_app_draft_listing_icon_download_info_request.proto";
-import "accrescent/console/v1/get_app_draft_listing_icon_download_info_response.proto";
+import "accrescent/console/v1/download_app_draft_listing_icon_request.proto";
+import "accrescent/console/v1/download_app_draft_listing_icon_response.proto";
+import "accrescent/console/v1/download_app_draft_request.proto";
+import "accrescent/console/v1/download_app_draft_response.proto";
 import "accrescent/console/v1/get_app_draft_request.proto";
 import "accrescent/console/v1/get_app_draft_response.proto";
 import "accrescent/console/v1/list_app_drafts_request.proto";
@@ -32,6 +28,10 @@ import "accrescent/console/v1/submit_app_draft_request.proto";
 import "accrescent/console/v1/submit_app_draft_response.proto";
 import "accrescent/console/v1/update_app_draft_request.proto";
 import "accrescent/console/v1/update_app_draft_response.proto";
+import "accrescent/console/v1/upload_app_draft_listing_icon_request.proto";
+import "accrescent/console/v1/upload_app_draft_listing_icon_response.proto";
+import "accrescent/console/v1/upload_app_draft_request.proto";
+import "accrescent/console/v1/upload_app_draft_response.proto";
 import "google/api/annotations.proto";
 import "google/api/client.proto";
 
@@ -69,19 +69,19 @@ service AppDraftService {
     };
   }
 
-  // Creates an app draft upload operation.
-  rpc CreateAppDraftUploadOperation(CreateAppDraftUploadOperationRequest) returns (CreateAppDraftUploadOperationResponse) {
+  // Uploads an app draft.
+  rpc UploadAppDraft(UploadAppDraftRequest) returns (UploadAppDraftResponse) {
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/upload_operations:create"
+      post: "/v1/app_drafts/{app_draft_id}:upload"
       body: "*"
     };
   }
 
-  // Gets an app draft's download info.
-  rpc GetAppDraftDownloadInfo(GetAppDraftDownloadInfoRequest) returns (GetAppDraftDownloadInfoResponse) {
+  // Downloads an app draft.
+  rpc DownloadAppDraft(DownloadAppDraftRequest) returns (DownloadAppDraftResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/download_info:get"
+      post: "/v1/app_drafts/{app_draft_id}:download"
       body: "*"
     };
   }
@@ -115,24 +115,24 @@ service AppDraftService {
   // Creates a new app listing for an app draft.
   rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/listings/{language}:create"
+      post: "/v1/app_draft_listings:create"
       body: "*"
     };
   }
 
-  // Creates an app draft listing icon upload operation.
-  rpc CreateAppDraftListingIconUploadOperation(CreateAppDraftListingIconUploadOperationRequest) returns (CreateAppDraftListingIconUploadOperationResponse) {
+  // Uploads an app draft listing icon.
+  rpc UploadAppDraftListingIcon(UploadAppDraftListingIconRequest) returns (UploadAppDraftListingIconResponse) {
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/listings/{language}/icon/upload_operations:create"
+      post: "/v1/app_draft_listings/{app_draft_listing_id}/icon:upload"
       body: "*"
     };
   }
 
-  // Gets an app draft listing icon's download info.
-  rpc GetAppDraftListingIconDownloadInfo(GetAppDraftListingIconDownloadInfoRequest) returns (GetAppDraftListingIconDownloadInfoResponse) {
+  // Downloads an app draft listing icon.
+  rpc DownloadAppDraftListingIcon(DownloadAppDraftListingIconRequest) returns (DownloadAppDraftListingIconResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/listings/{language}/icon/download_info:get"
+      post: "/v1/app_draft_listings/{app_draft_listing_id}/icon:download"
       body: "*"
     };
   }
@@ -141,7 +141,7 @@ service AppDraftService {
   rpc DeleteAppDraftListing(DeleteAppDraftListingRequest) returns (DeleteAppDraftListingResponse) {
     option idempotency_level = IDEMPOTENT;
     option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/listings/{language}:delete"
+      post: "/v1/app_draft_listings/{app_draft_listing_id}:delete"
       body: "*"
     };
   }

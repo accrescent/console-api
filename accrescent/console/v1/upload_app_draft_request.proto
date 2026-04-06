@@ -12,11 +12,8 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Response to getting an app draft's download info.
-message GetAppDraftDownloadInfoResponse {
-  // The URL of the APK set which can be retrieved with a simple HTTP GET.
-  optional string apk_set_url = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.uri = true
-  ];
+// Request defining parameters for uploading an app draft.
+message UploadAppDraftRequest {
+  // The ID of the app draft to create an upload operation for.
+  string app_draft_id = 1 [(buf.validate.field).required = true];
 }

@@ -12,12 +12,8 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Request defining parameters for creating an app edit listing icon upload
-// operation.
-message CreateAppEditListingIconUploadOperationRequest {
-  // The ID of the app edit to create an icon upload operation for.
+// Request defining parameters for uploading an app edit.
+message UploadAppEditRequest {
+  // The ID of the app edit to create an upload operation for.
   string app_edit_id = 1 [(buf.validate.field).required = true];
-
-  // The language of the app listing to create an icon upload operation for.
-  string language = 2 [(buf.validate.field).required = true];
 }

@@ -13,17 +13,17 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Response to creating an app edit upload operation.
-message CreateAppEditUploadOperationResponse {
-  // An HTTP or HTTPS URL at which an APK set can be submitted with an HTTP PUT
+// Response to uploading an app edit listing icon.
+message UploadAppEditListingIconResponse {
+  // An HTTP or HTTPS URL at which the icon can be submitted with an HTTP PUT
   // request.
-  optional string apk_set_upload_url = 1 [
+  optional string upload_url = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.uri = true
   ];
 
   // The upload processing operation.
   //
-  // The response type of this operation is UploadAppEditResult.
+  // The response type of this operation is UploadAppEditListingIconResult.
   google.longrunning.Operation processing_operation = 2 [(buf.validate.field).required = true];
 }

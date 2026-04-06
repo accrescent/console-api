@@ -14,9 +14,6 @@ option java_package = "app.accrescent.console.v1";
 
 // Request defining parameters for deleting an app draft listing.
 message DeleteAppDraftListingRequest {
-  // The ID of the app draft the listing is associated with.
-  string app_draft_id = 1 [(buf.validate.field).required = true];
-
-  // The BCP-47 language tag of the listing to delete.
-  string language = 2 [(buf.validate.field).required = true];
+  // The ID of the app draft listing to delete.
+  string app_draft_listing_id = 1 [(buf.validate.field).required = true];
 }

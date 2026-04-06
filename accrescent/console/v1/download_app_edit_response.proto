@@ -12,8 +12,11 @@ option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;consol
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Request defining parameters for creating an app edit upload operation.
-message CreateAppEditUploadOperationRequest {
-  // The ID of the app edit to create an upload operation for.
-  string app_edit_id = 1 [(buf.validate.field).required = true];
+// Response to downloading an app edit.
+message DownloadAppEditResponse {
+  // The URL of the APK set which can be retrieved with a simple HTTP GET.
+  optional string apk_set_url = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uri = true
+  ];
 }
