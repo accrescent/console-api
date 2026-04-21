@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for updating an app edit listing.
 message UpdateAppEditListingRequest {
   // The ID of the app edit listing to update.
-  string app_edit_listing_id = 1 [(buf.validate.field).required = true];
+  optional string app_edit_listing_id = 1 [(buf.validate.field).required = true];
 
   // The proper name of the app, possibly including very short descriptive text
   // (e.g. "SecureChat - Secure Texting").

@@ -17,7 +17,7 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for updating a user.
 message UpdateUserRequest {
   // The ID of the user to update.
-  string user_id = 1 [(buf.validate.field).required = true];
+  optional string user_id = 1 [(buf.validate.field).required = true];
 
   // The user's roles.
   repeated UserRole roles = 2 [

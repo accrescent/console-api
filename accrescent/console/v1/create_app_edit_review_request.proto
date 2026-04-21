@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for creating an app edit review.
 message CreateAppEditReviewRequest {
   // The ID of the app edit to create a review for.
-  string app_edit_id = 1 [(buf.validate.field).required = true];
+  optional string app_edit_id = 1 [(buf.validate.field).required = true];
 
   // Whether the app edit should be approved. If false, it is rejected.
   optional bool approved = 2 [(buf.validate.field).required = true];

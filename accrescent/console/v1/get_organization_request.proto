@@ -15,5 +15,5 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for getting an organization.
 message GetOrganizationRequest {
   // The ID of the organization to retrieve.
-  string organization_id = 1 [(buf.validate.field).required = true];
+  optional string organization_id = 1 [(buf.validate.field).required = true];
 }

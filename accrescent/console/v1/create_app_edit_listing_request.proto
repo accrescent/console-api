@@ -15,10 +15,10 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for creating an app listing for an app edit.
 message CreateAppEditListingRequest {
   // The app edit to create the app listing for.
-  string app_edit_id = 1 [(buf.validate.field).required = true];
+  optional string app_edit_id = 1 [(buf.validate.field).required = true];
 
   // The language of this listing's fields as a BCP-47 tag.
-  string language = 2 [
+  optional string language = 2 [
     (buf.validate.field).required = true,
     (buf.validate.field).string = {
       in: ["en-US"]

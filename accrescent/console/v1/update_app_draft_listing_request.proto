@@ -16,7 +16,7 @@ option java_package = "app.accrescent.console.v1";
 // Request defining parameters for updating an app draft listing.
 message UpdateAppDraftListingRequest {
   // The ID of the app draft listing to update.
-  string app_draft_listing_id = 1 [(buf.validate.field).required = true];
+  optional string app_draft_listing_id = 1 [(buf.validate.field).required = true];
 
   // The proper name of the app, possibly including very short descriptive text
   // (e.g. "SecureChat - Secure Texting").
