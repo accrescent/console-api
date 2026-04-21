@@ -5,5 +5,5 @@
 version: v2
 clean: true
 plugins:
-  - remote: buf.build/grpc-ecosystem/gateway
+  - remote: buf.build/grpc-ecosystem/gateway:v2.29.0
     out: gen/go
