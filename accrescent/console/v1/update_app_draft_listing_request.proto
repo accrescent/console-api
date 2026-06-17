@@ -21,14 +21,14 @@ message UpdateAppDraftListingRequest {
   // The proper name of the app, possibly including very short descriptive text
   // (e.g. "SecureChat - Secure Texting").
   optional string name = 2 [
-    (buf.validate.field).string.min_len = 3,
+    (buf.validate.field).string.min_len = 1,
     (buf.validate.field).string.max_len = 30
   ];
 
   // A short description of the app to be shown in headers and small screen
   // spaces.
   optional string short_description = 3 [
-    (buf.validate.field).string.min_len = 3,
+    (buf.validate.field).string.min_len = 1,
     (buf.validate.field).string.max_len = 80
   ];
 
