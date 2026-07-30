@@ -28,12 +28,21 @@ message AppDraft {
   // The draft's associated package information, if available.
   AppPackage app_package = 4;
 
+  // The operation ID of the latest upload for this app draft.
+  optional string latest_upload_operation_id = 5;
+
   // The timestamp at which the app draft has been submitted for review, if
   // applicable.
-  google.protobuf.Timestamp submit_time = 5;
+  google.protobuf.Timestamp submit_time = 6;
 
   // The timestamp at which the app draft has been published, if applicable.
-  google.protobuf.Timestamp publish_time = 6;
+  google.protobuf.Timestamp publish_time = 7;
+
+  option (buf.validate.message).cel = {
+    id: "latest_upload_operation_id.requires_unsubmitted"
+    message: "latest upload operation ID may be present only for unsubmitted app drafts"
+    expression: "has(this.latest_upload_operation_id) ? !has(this.submit_time) : true"
+  };
 
   option (buf.validate.message).cel = {
     id: "submit_time.requires_listing_language_and_package"
