@@ -14,8 +14,8 @@ option java_package = "app.accrescent.console.v1";
 
 // Response to downloading an app draft.
 message DownloadAppDraftResponse {
-  // The URL of the APK set which can be retrieved with a simple HTTP GET.
-  optional string apk_set_url = 1 [
+  // The URI of the APK set which can be retrieved with a simple HTTP GET.
+  optional string apk_set_uri = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.uri = true
   ];

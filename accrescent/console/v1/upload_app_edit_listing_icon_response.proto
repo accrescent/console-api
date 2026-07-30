@@ -15,9 +15,9 @@ option java_package = "app.accrescent.console.v1";
 
 // Response to uploading an app edit listing icon.
 message UploadAppEditListingIconResponse {
-  // An HTTP or HTTPS URL at which the icon can be submitted with an HTTP PUT
+  // An HTTP or HTTPS URI at which the icon can be submitted with an HTTP PUT
   // request.
-  optional string upload_url = 1 [
+  optional string upload_uri = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.uri = true
   ];
