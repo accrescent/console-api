@@ -34,4 +34,19 @@ message AppDraft {
 
   // The timestamp at which the app draft has been published, if applicable.
   google.protobuf.Timestamp publish_time = 6;
+
+  option (buf.validate.message).cel = {
+    id: "submit_time.requires_listing_language_and_package"
+    message: "submitted app drafts must have default_listing_language and app_package set"
+    expression:
+      "has(this.submit_time) "
+      "? has(this.default_listing_language) && has(this.app_package) "
+      ": true"
+  };
+
+  option (buf.validate.message).cel = {
+    id: "publish_time.requires_submit_time"
+    message: "published app drafts must be submitted"
+    expression: "has(this.publish_time) ? has(this.submit_time) : true"
+  };
 }
