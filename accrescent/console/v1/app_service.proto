@@ -14,7 +14,6 @@ import "accrescent/console/v1/list_apps_request.proto";
 import "accrescent/console/v1/list_apps_response.proto";
 import "accrescent/console/v1/update_app_request.proto";
 import "accrescent/console/v1/update_app_response.proto";
-import "google/api/annotations.proto";
 import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
@@ -28,35 +27,18 @@ service AppService {
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/apps/{app_id}:get"
-      body: "*"
-    };
   }
 
   // Lists published apps.
   rpc ListApps(ListAppsRequest) returns (ListAppsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/apps:list"
-      body: "*"
-    };
   }
 
   // Lists app listings.
   rpc ListAppListings(ListAppListingsRequest) returns (ListAppListingsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_listings:list"
-      body: "*"
-    };
   }
 
   // Updates a published app.
-  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse) {
-    option (google.api.http) = {
-      post: "/v1/apps/{app_id}:update"
-      body: "*"
-    };
-  }
+  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse) {}
 }

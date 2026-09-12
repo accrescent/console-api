@@ -36,7 +36,6 @@ import "accrescent/console/v1/upload_app_draft_listing_icon_request.proto";
 import "accrescent/console/v1/upload_app_draft_listing_icon_response.proto";
 import "accrescent/console/v1/upload_app_draft_request.proto";
 import "accrescent/console/v1/upload_app_draft_response.proto";
-import "google/api/annotations.proto";
 import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
@@ -48,131 +47,65 @@ service AppDraftService {
   option (google.api.default_host) = "console-api.accrescent.app";
 
   // Creates a new app draft.
-  rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_drafts:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse) {}
 
   // Gets an app draft.
   rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:get"
-      body: "*"
-    };
   }
 
   // Lists app drafts.
   rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_drafts:list"
-      body: "*"
-    };
   }
 
   // Uploads an app draft.
-  rpc UploadAppDraft(UploadAppDraftRequest) returns (UploadAppDraftResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:upload"
-      body: "*"
-    };
-  }
+  rpc UploadAppDraft(UploadAppDraftRequest) returns (UploadAppDraftResponse) {}
 
   // Downloads an app draft.
   rpc DownloadAppDraft(DownloadAppDraftRequest) returns (DownloadAppDraftResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:download"
-      body: "*"
-    };
   }
 
   // Updates an app draft.
-  rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:update"
-      body: "*"
-    };
-  }
+  rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse) {}
 
   // Submits an app draft for review.
   rpc SubmitAppDraft(SubmitAppDraftRequest) returns (SubmitAppDraftResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:submit"
-      body: "*"
-    };
   }
 
   // Deletes an existing app draft.
   rpc DeleteAppDraft(DeleteAppDraftRequest) returns (DeleteAppDraftResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:delete"
-      body: "*"
-    };
   }
 
   // Creates a new app listing for an app draft.
-  rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {}
 
   // Lists app draft listings.
   rpc ListAppDraftListings(ListAppDraftListingsRequest) returns (ListAppDraftListingsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings:list"
-      body: "*"
-    };
   }
 
   // Updates an app draft listing.
-  rpc UpdateAppDraftListing(UpdateAppDraftListingRequest) returns (UpdateAppDraftListingResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings/{app_draft_listing_id}:update"
-      body: "*"
-    };
-  }
+  rpc UpdateAppDraftListing(UpdateAppDraftListingRequest) returns (UpdateAppDraftListingResponse) {}
 
   // Uploads an app draft listing icon.
-  rpc UploadAppDraftListingIcon(UploadAppDraftListingIconRequest) returns (UploadAppDraftListingIconResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings/{app_draft_listing_id}/icon:upload"
-      body: "*"
-    };
-  }
+  rpc UploadAppDraftListingIcon(UploadAppDraftListingIconRequest) returns (UploadAppDraftListingIconResponse) {}
 
   // Downloads an app draft listing icon.
   rpc DownloadAppDraftListingIcon(DownloadAppDraftListingIconRequest) returns (DownloadAppDraftListingIconResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings/{app_draft_listing_id}/icon:download"
-      body: "*"
-    };
   }
 
   // Deletes an existing app draft listing.
   rpc DeleteAppDraftListing(DeleteAppDraftListingRequest) returns (DeleteAppDraftListingResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_draft_listings/{app_draft_listing_id}:delete"
-      body: "*"
-    };
   }
 
   // Publishes an app draft to the app store.
   rpc PublishAppDraft(PublishAppDraftRequest) returns (PublishAppDraftResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}:publish"
-      body: "*"
-    };
   }
 }

@@ -10,7 +10,6 @@ import "accrescent/console/v1/create_app_draft_review_request.proto";
 import "accrescent/console/v1/create_app_draft_review_response.proto";
 import "accrescent/console/v1/create_app_edit_review_request.proto";
 import "accrescent/console/v1/create_app_edit_review_response.proto";
-import "google/api/annotations.proto";
 import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
@@ -23,18 +22,8 @@ service ReviewService {
   option (google.api.default_host) = "console-api.accrescent.app";
 
   // Reviews an app draft.
-  rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_drafts/{app_draft_id}/reviews:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppDraftReview(CreateAppDraftReviewRequest) returns (CreateAppDraftReviewResponse) {}
 
   // Reviews an app edit.
-  rpc CreateAppEditReview(CreateAppEditReviewRequest) returns (CreateAppEditReviewResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}/reviews:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppEditReview(CreateAppEditReviewRequest) returns (CreateAppEditReviewResponse) {}
 }

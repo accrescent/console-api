@@ -32,7 +32,6 @@ import "accrescent/console/v1/upload_app_edit_listing_icon_request.proto";
 import "accrescent/console/v1/upload_app_edit_listing_icon_response.proto";
 import "accrescent/console/v1/upload_app_edit_request.proto";
 import "accrescent/console/v1/upload_app_edit_response.proto";
-import "google/api/annotations.proto";
 import "google/api/client.proto";
 
 option go_package = "golang.accrescent.app/genproto/accrescent/console/v1;console";
@@ -44,113 +43,55 @@ service AppEditService {
   option (google.api.default_host) = "console-api.accrescent.app";
 
   // Creates a new app edit.
-  rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edits:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {}
 
   // Gets an app edit.
   rpc GetAppEdit(GetAppEditRequest) returns (GetAppEditResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:get"
-      body: "*"
-    };
   }
 
   // Lists app edits.
   rpc ListAppEdits(ListAppEditsRequest) returns (ListAppEditsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_edits:list"
-      body: "*"
-    };
   }
 
   // Uploads an app edit APK set.
-  rpc UploadAppEdit(UploadAppEditRequest) returns (UploadAppEditResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:upload"
-      body: "*"
-    };
-  }
+  rpc UploadAppEdit(UploadAppEditRequest) returns (UploadAppEditResponse) {}
 
   // Downloads an app edit.
   rpc DownloadAppEdit(DownloadAppEditRequest) returns (DownloadAppEditResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:download"
-      body: "*"
-    };
   }
 
   // Updates an app edit.
-  rpc UpdateAppEdit(UpdateAppEditRequest) returns (UpdateAppEditResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:update"
-      body: "*"
-    };
-  }
+  rpc UpdateAppEdit(UpdateAppEditRequest) returns (UpdateAppEditResponse) {}
 
   // Submits an app edit.
   rpc SubmitAppEdit(SubmitAppEditRequest) returns (SubmitAppEditResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:submit"
-      body: "*"
-    };
   }
 
   // Deletes an app edit.
   rpc DeleteAppEdit(DeleteAppEditRequest) returns (DeleteAppEditResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_edits/{app_edit_id}:delete"
-      body: "*"
-    };
   }
 
   // Creates a new app listing for an app edit.
-  rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edit_listings:create"
-      body: "*"
-    };
-  }
+  rpc CreateAppEditListing(CreateAppEditListingRequest) returns (CreateAppEditListingResponse) {}
 
   // Lists app edit listings.
   rpc ListAppEditListings(ListAppEditListingsRequest) returns (ListAppEditListingsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
-    option (google.api.http) = {
-      post: "/v1/app_edit_listings:list"
-      body: "*"
-    };
   }
 
   // Updates an app edit listing.
-  rpc UpdateAppEditListing(UpdateAppEditListingRequest) returns (UpdateAppEditListingResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edit_listings/{app_edit_listing_id}:update"
-      body: "*"
-    };
-  }
+  rpc UpdateAppEditListing(UpdateAppEditListingRequest) returns (UpdateAppEditListingResponse) {}
 
   // Uploads an app edit listing icon.
-  rpc UploadAppEditListingIcon(UploadAppEditListingIconRequest) returns (UploadAppEditListingIconResponse) {
-    option (google.api.http) = {
-      post: "/v1/app_edit_listings/{app_edit_listing_id}/icon:upload"
-      body: "*"
-    };
-  }
+  rpc UploadAppEditListingIcon(UploadAppEditListingIconRequest) returns (UploadAppEditListingIconResponse) {}
 
   // Deletes an existing app edit listing.
   rpc DeleteAppEditListing(DeleteAppEditListingRequest) returns (DeleteAppEditListingResponse) {
     option idempotency_level = IDEMPOTENT;
-    option (google.api.http) = {
-      post: "/v1/app_edit_listings/{app_edit_listing_id}:delete"
-      body: "*"
-    };
   }
 }
