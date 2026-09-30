@@ -17,14 +17,8 @@ message User {
   // The user's unique ID.
   optional string id = 1 [(buf.validate.field).required = true];
 
-  // The user's email.
-  optional string email = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.email = true
-  ];
-
   // The user's roles.
-  repeated UserRole roles = 3 [
+  repeated UserRole roles = 2 [
     (buf.validate.field).repeated.items.enum.not_in = 0,
     (buf.validate.field).repeated.unique = true
   ];
