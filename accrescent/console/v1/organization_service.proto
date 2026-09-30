@@ -6,10 +6,10 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
+import "accrescent/console/v1/get_my_organization_request.proto";
+import "accrescent/console/v1/get_my_organization_response.proto";
 import "accrescent/console/v1/get_organization_request.proto";
 import "accrescent/console/v1/get_organization_response.proto";
-import "accrescent/console/v1/list_organizations_request.proto";
-import "accrescent/console/v1/list_organizations_response.proto";
 import "google/api/client.proto";
 
 option java_multiple_files = true;
@@ -24,8 +24,8 @@ service OrganizationService {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 
-  // Lists organizations.
-  rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse) {
+  // Gets the organization owned by the currently authenticated user.
+  rpc GetMyOrganization(GetMyOrganizationRequest) returns (GetMyOrganizationResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 }
