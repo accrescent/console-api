@@ -8,8 +8,6 @@ package accrescent.console.v1;
 
 import "accrescent/console/v1/get_self_request.proto";
 import "accrescent/console/v1/get_self_response.proto";
-import "accrescent/console/v1/log_out_request.proto";
-import "accrescent/console/v1/log_out_response.proto";
 import "accrescent/console/v1/update_user_request.proto";
 import "accrescent/console/v1/update_user_response.proto";
 
@@ -25,9 +23,4 @@ service UserService {
 
   // Updates a user.
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
-
-  // Logs out the currently authenticated user, invalidating their session.
-  rpc LogOut(LogOutRequest) returns (LogOutResponse) {
-    option idempotency_level = IDEMPOTENT;
-  }
 }
