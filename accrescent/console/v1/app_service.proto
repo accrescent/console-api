@@ -14,15 +14,12 @@ import "accrescent/console/v1/list_apps_request.proto";
 import "accrescent/console/v1/list_apps_response.proto";
 import "accrescent/console/v1/update_app_request.proto";
 import "accrescent/console/v1/update_app_response.proto";
-import "google/api/client.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
 // Service providing RPCs for managing published apps.
 service AppService {
-  option (google.api.default_host) = "console-api.accrescent.app";
-
   // Gets a published app.
   rpc GetApp(GetAppRequest) returns (GetAppResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;

@@ -32,15 +32,12 @@ import "accrescent/console/v1/upload_app_edit_listing_icon_request.proto";
 import "accrescent/console/v1/upload_app_edit_listing_icon_response.proto";
 import "accrescent/console/v1/upload_app_edit_request.proto";
 import "accrescent/console/v1/upload_app_edit_response.proto";
-import "google/api/client.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
 // Service providing RPCs for managing app edits.
 service AppEditService {
-  option (google.api.default_host) = "console-api.accrescent.app";
-
   // Creates a new app edit.
   rpc CreateAppEdit(CreateAppEditRequest) returns (CreateAppEditResponse) {}
 
