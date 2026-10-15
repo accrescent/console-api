@@ -10,15 +10,12 @@ import "accrescent/console/v1/get_my_organization_request.proto";
 import "accrescent/console/v1/get_my_organization_response.proto";
 import "accrescent/console/v1/get_organization_request.proto";
 import "accrescent/console/v1/get_organization_response.proto";
-import "google/api/client.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
 // Service providing RPCs for managing organizations.
 service OrganizationService {
-  option (google.api.default_host) = "console-api.accrescent.app";
-
   // Gets an organization.
   rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
