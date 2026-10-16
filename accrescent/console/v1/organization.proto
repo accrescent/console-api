@@ -17,14 +17,26 @@ message Organization {
   optional string id = 1 [(buf.validate.field).required = true];
 
   // The maximum number of published apps allowed to exist under this organization.
-  optional uint32 published_app_limit = 2 [(buf.validate.field).required = true];
+  optional int64 published_app_limit = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gte = 0
+  ];
 
   // The current number of published apps in this organization.
-  optional uint32 published_app_count = 3 [(buf.validate.field).required = true];
+  optional int64 published_app_count = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gte = 0
+  ];
 
   // The maximum number of active app drafts allowed to exist under this organization.
-  optional uint32 active_app_draft_limit = 4 [(buf.validate.field).required = true];
+  optional int64 active_app_draft_limit = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gte = 0
+  ];
 
   // The current number of active app drafts in this organization.
-  optional uint32 active_app_draft_count = 5 [(buf.validate.field).required = true];
+  optional int64 active_app_draft_count = 5 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gte = 0
+  ];
 }
