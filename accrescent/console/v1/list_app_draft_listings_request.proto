@@ -19,7 +19,7 @@ message ListAppDraftListingsRequest {
   // The maximum number of app draft listings to return in the response. If
   // unspecified, defaults to 50. All requests with a higher page size will be
   // capped to 50.
-  optional uint32 page_size = 2;
+  optional uint32 page_size = 2 [(buf.validate.field).uint32.gt = 0];
 
   // An opaque page continuation token returned in a previous
   // ListAppDraftListingsResponse. If unspecified, the first page is returned.
