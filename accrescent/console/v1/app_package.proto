@@ -17,17 +17,17 @@ message AppPackage {
   optional string android_application_id = 1 [(buf.validate.field).required = true];
 
   // The app package's version code.
-  optional uint64 version_code = 2 [
+  optional int64 version_code = 2 [
     (buf.validate.field).required = true,
-    (buf.validate.field).uint64.gt = 0
+    (buf.validate.field).int64.gt = 0
   ];
 
   // The app package's version name.
   optional string version_name = 3 [(buf.validate.field).required = true];
 
   // The app package's target SDK.
-  optional uint64 target_sdk = 4 [
+  optional int32 target_sdk = 4 [
     (buf.validate.field).required = true,
-    (buf.validate.field).uint64.gt = 0
+    (buf.validate.field).int32.gt = 0
   ];
 }
