@@ -18,7 +18,7 @@ message ListAppsRequest {
 
   // The maximum number of apps to return in the response. If unspecified,
   // defaults to 50. All requests with a higher page size will be capped to 50.
-  optional uint32 page_size = 2;
+  optional uint32 page_size = 2 [(buf.validate.field).uint32.gt = 0];
 
   // An opaque page continuation token returned in a previous ListAppsResponse.
   // If unspecified, the first page is returned.
