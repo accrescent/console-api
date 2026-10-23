@@ -29,4 +29,8 @@ enum ErrorReason {
 
   // The server encountered an internal error.
   ERROR_REASON_INTERNAL = 5;
+
+  // The service is temporarily unavailable, e.g., because of maintenance or
+  // overload.
+  ERROR_REASON_SERVICE_UNAVAILABLE = 6;
 }
