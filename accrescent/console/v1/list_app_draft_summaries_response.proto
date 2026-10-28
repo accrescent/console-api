@@ -1,0 +1,28 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/app_draft_summary.proto";
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Response to listing app draft summaries.
+message ListAppDraftSummariesResponse {
+  // The app draft summaries matching the request parameters and ordered from
+  // newest to oldest.
+  repeated AppDraftSummary app_draft_summaries = 1 [(buf.validate.field).cel = {
+    id: "app_draft_summaries.have_unique_ids"
+    message: "app draft summaries must have unique IDs"
+    expression: "this.map(s, s.id).unique()"
+  }];
+
+  // An opaque token which, if passed to another invocation of
+  // ListAppDraftSummaries, will return the next page of app draft summaries.
+  optional string next_page_token = 2;
+}

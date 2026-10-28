@@ -1,0 +1,36 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// A summary of an app draft.
+message AppDraftSummary {
+  // The app draft's unique ID.
+  optional string id = 1 [(buf.validate.field).required = true];
+
+  // The app's name from the draft's default listing, if set.
+  optional string name = 2;
+
+  // An HTTP(S) URI of the icon from the draft's default listing, if set.
+  optional string icon_uri = 3 [(buf.validate.field).string.uri = true];
+
+  // The version name of the draft's uploaded package, if available.
+  optional string version_name = 4;
+
+  // The Android application ID of the draft's uploaded package, if available.
+  optional string android_application_id = 5;
+
+  option (buf.validate.message).cel = {
+    id: "version_name.requires_android_application_id"
+    message: "version_name and android_application_id must be set together"
+    expression: "has(this.version_name) == has(this.android_application_id)"
+  };
+}

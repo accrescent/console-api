@@ -22,8 +22,8 @@ import "accrescent/console/v1/get_app_draft_request.proto";
 import "accrescent/console/v1/get_app_draft_response.proto";
 import "accrescent/console/v1/list_app_draft_listings_request.proto";
 import "accrescent/console/v1/list_app_draft_listings_response.proto";
-import "accrescent/console/v1/list_app_drafts_request.proto";
-import "accrescent/console/v1/list_app_drafts_response.proto";
+import "accrescent/console/v1/list_app_draft_summaries_request.proto";
+import "accrescent/console/v1/list_app_draft_summaries_response.proto";
 import "accrescent/console/v1/publish_app_draft_request.proto";
 import "accrescent/console/v1/publish_app_draft_response.proto";
 import "accrescent/console/v1/submit_app_draft_request.proto";
@@ -50,8 +50,10 @@ service AppDraftService {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 
-  // Lists app drafts.
-  rpc ListAppDrafts(ListAppDraftsRequest) returns (ListAppDraftsResponse) {
+  // Lists app draft summaries for a given organization.
+  //
+  // App drafts are listed from newest to oldest.
+  rpc ListAppDraftSummaries(ListAppDraftSummariesRequest) returns (ListAppDraftSummariesResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 

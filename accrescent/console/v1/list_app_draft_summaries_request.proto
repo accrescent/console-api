@@ -11,16 +11,17 @@ import "buf/validate/validate.proto";
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
 
-// Request defining parameters for listing app drafts.
-message ListAppDraftsRequest {
+// Request defining parameters for listing app draft summaries.
+message ListAppDraftSummariesRequest {
   // The organization containing the drafts to list.
   optional string organization_id = 1 [(buf.validate.field).required = true];
 
-  // The maximum number of app drafts to return in the response. If unspecified,
-  // defaults to 50. All requests with a higher page size will be capped to 50.
+  // The maximum number of app draft summaries to return in the response. If
+  // unspecified, defaults to 50. All requests with a higher page size will be
+  // capped to 50.
   optional int32 page_size = 2 [(buf.validate.field).int32.gt = 0];
 
   // An opaque page continuation token returned in a previous
-  // ListAppDraftsResponse. If unspecified, the first page is returned.
+  // ListAppDraftSummariesResponse. If unspecified, the first page is returned.
   optional string page_token = 3;
 }
