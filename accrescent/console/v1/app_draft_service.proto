@@ -18,6 +18,8 @@ import "accrescent/console/v1/download_app_draft_listing_icon_request.proto";
 import "accrescent/console/v1/download_app_draft_listing_icon_response.proto";
 import "accrescent/console/v1/download_app_draft_request.proto";
 import "accrescent/console/v1/download_app_draft_response.proto";
+import "accrescent/console/v1/get_app_draft_details_request.proto";
+import "accrescent/console/v1/get_app_draft_details_response.proto";
 import "accrescent/console/v1/get_app_draft_request.proto";
 import "accrescent/console/v1/get_app_draft_response.proto";
 import "accrescent/console/v1/list_app_draft_listings_request.proto";
@@ -47,6 +49,11 @@ service AppDraftService {
 
   // Gets an app draft.
   rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
+
+  // Gets the details of an app draft to display on its corresponding page.
+  rpc GetAppDraftDetails(GetAppDraftDetailsRequest) returns (GetAppDraftDetailsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 
