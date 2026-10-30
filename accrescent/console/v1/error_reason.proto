@@ -36,4 +36,8 @@ enum ErrorReason {
 
   // The resource the caller attempted to create already exists.
   ERROR_REASON_ALREADY_EXISTS = 7;
+
+  // The etag provided by the caller doesn't match the resource's current etag,
+  // meaning the resource has been updated since the caller last read it.
+  ERROR_REASON_ETAG_MISMATCH = 8;
 }

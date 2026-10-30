@@ -34,6 +34,8 @@ import "accrescent/console/v1/submit_app_draft_request.proto";
 import "accrescent/console/v1/submit_app_draft_response.proto";
 import "accrescent/console/v1/update_app_draft_listing_request.proto";
 import "accrescent/console/v1/update_app_draft_listing_response.proto";
+import "accrescent/console/v1/update_app_draft_listing_text_request.proto";
+import "accrescent/console/v1/update_app_draft_listing_text_response.proto";
 import "accrescent/console/v1/update_app_draft_request.proto";
 import "accrescent/console/v1/update_app_draft_response.proto";
 import "accrescent/console/v1/upload_app_draft_listing_icon_request.proto";
@@ -61,6 +63,9 @@ service AppDraftService {
 
   // Creates listing text for an app draft.
   rpc CreateAppDraftListingText(CreateAppDraftListingTextRequest) returns (CreateAppDraftListingTextResponse) {}
+
+  // Updates an app draft's listing text.
+  rpc UpdateAppDraftListingText(UpdateAppDraftListingTextRequest) returns (UpdateAppDraftListingTextResponse) {}
 
   // Lists app draft summaries for a given organization.
   //

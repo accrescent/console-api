@@ -1,0 +1,69 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/field_mask.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Request defining parameters for updating an app draft's listing text.
+message UpdateAppDraftListingTextRequest {
+  // The ID of the app draft to update the listing text of.
+  optional string app_draft_id = 1 [(buf.validate.field).required = true];
+
+  // The proper name of the app, possibly including very short descriptive text
+  // (e.g. "SecureChat - Secure Texting").
+  optional string name = 2 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 30
+  ];
+
+  // A short description of the app to be shown in headers and small screen
+  // spaces.
+  optional string short_description = 3 [
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.max_len = 80
+  ];
+
+  // The etag of the listing text as last seen by the client.
+  //
+  // Required to prevent clients from accidentally overwriting concurrent
+  // updates.
+  optional string etag = 4 [(buf.validate.field).required = true];
+
+  // The list of fields to update.
+  //
+  // Required to enforce forward-compatible use by clients.
+  google.protobuf.FieldMask update_mask = 5 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).field_mask = {
+      in: [
+        "name",
+        "short_description"
+      ]
+    },
+    (buf.validate.field).cel = {
+      id: "update_mask.non_empty"
+      message: "update_mask must contain at least one path"
+      expression: "this.paths.size() > 0"
+    }
+  ];
+
+  option (buf.validate.message).cel = {
+    id: "name.present_iff_in_update_mask"
+    message: "name must be set if and only if present in update_mask"
+    expression: "('name' in this.update_mask.paths) == has(this.name)"
+  };
+
+  option (buf.validate.message).cel = {
+    id: "short_description.present_iff_in_update_mask"
+    message: "short_description must be set if and only if present in update_mask"
+    expression: "('short_description' in this.update_mask.paths) == has(this.short_description)"
+  };
+}
