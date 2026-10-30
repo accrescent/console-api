@@ -33,4 +33,7 @@ enum ErrorReason {
   // The service is temporarily unavailable, e.g., because of maintenance or
   // overload.
   ERROR_REASON_SERVICE_UNAVAILABLE = 6;
+
+  // The resource the caller attempted to create already exists.
+  ERROR_REASON_ALREADY_EXISTS = 7;
 }
