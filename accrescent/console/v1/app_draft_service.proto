@@ -6,42 +6,18 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
-import "accrescent/console/v1/create_app_draft_listing_request.proto";
-import "accrescent/console/v1/create_app_draft_listing_response.proto";
 import "accrescent/console/v1/create_app_draft_listing_text_request.proto";
 import "accrescent/console/v1/create_app_draft_listing_text_response.proto";
 import "accrescent/console/v1/create_app_draft_request.proto";
 import "accrescent/console/v1/create_app_draft_response.proto";
-import "accrescent/console/v1/delete_app_draft_listing_request.proto";
-import "accrescent/console/v1/delete_app_draft_listing_response.proto";
 import "accrescent/console/v1/delete_app_draft_request.proto";
 import "accrescent/console/v1/delete_app_draft_response.proto";
-import "accrescent/console/v1/download_app_draft_listing_icon_request.proto";
-import "accrescent/console/v1/download_app_draft_listing_icon_response.proto";
-import "accrescent/console/v1/download_app_draft_request.proto";
-import "accrescent/console/v1/download_app_draft_response.proto";
 import "accrescent/console/v1/get_app_draft_details_request.proto";
 import "accrescent/console/v1/get_app_draft_details_response.proto";
-import "accrescent/console/v1/get_app_draft_request.proto";
-import "accrescent/console/v1/get_app_draft_response.proto";
-import "accrescent/console/v1/list_app_draft_listings_request.proto";
-import "accrescent/console/v1/list_app_draft_listings_response.proto";
 import "accrescent/console/v1/list_app_draft_summaries_request.proto";
 import "accrescent/console/v1/list_app_draft_summaries_response.proto";
-import "accrescent/console/v1/publish_app_draft_request.proto";
-import "accrescent/console/v1/publish_app_draft_response.proto";
-import "accrescent/console/v1/submit_app_draft_request.proto";
-import "accrescent/console/v1/submit_app_draft_response.proto";
-import "accrescent/console/v1/update_app_draft_listing_request.proto";
-import "accrescent/console/v1/update_app_draft_listing_response.proto";
 import "accrescent/console/v1/update_app_draft_listing_text_request.proto";
 import "accrescent/console/v1/update_app_draft_listing_text_response.proto";
-import "accrescent/console/v1/update_app_draft_request.proto";
-import "accrescent/console/v1/update_app_draft_response.proto";
-import "accrescent/console/v1/upload_app_draft_listing_icon_request.proto";
-import "accrescent/console/v1/upload_app_draft_listing_icon_response.proto";
-import "accrescent/console/v1/upload_app_draft_request.proto";
-import "accrescent/console/v1/upload_app_draft_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
@@ -50,11 +26,6 @@ option java_package = "app.accrescent.console.v1";
 service AppDraftService {
   // Creates a new app draft.
   rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse) {}
-
-  // Gets an app draft.
-  rpc GetAppDraft(GetAppDraftRequest) returns (GetAppDraftResponse) {
-    option idempotency_level = NO_SIDE_EFFECTS;
-  }
 
   // Gets the details of an app draft to display on its corresponding page.
   rpc GetAppDraftDetails(GetAppDraftDetailsRequest) returns (GetAppDraftDetailsResponse) {
@@ -74,53 +45,8 @@ service AppDraftService {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
 
-  // Uploads an app draft.
-  rpc UploadAppDraft(UploadAppDraftRequest) returns (UploadAppDraftResponse) {}
-
-  // Downloads an app draft.
-  rpc DownloadAppDraft(DownloadAppDraftRequest) returns (DownloadAppDraftResponse) {
-    option idempotency_level = NO_SIDE_EFFECTS;
-  }
-
-  // Updates an app draft.
-  rpc UpdateAppDraft(UpdateAppDraftRequest) returns (UpdateAppDraftResponse) {}
-
-  // Submits an app draft for review.
-  rpc SubmitAppDraft(SubmitAppDraftRequest) returns (SubmitAppDraftResponse) {
-    option idempotency_level = IDEMPOTENT;
-  }
-
   // Deletes an existing app draft.
   rpc DeleteAppDraft(DeleteAppDraftRequest) returns (DeleteAppDraftResponse) {
-    option idempotency_level = IDEMPOTENT;
-  }
-
-  // Creates a new app listing for an app draft.
-  rpc CreateAppDraftListing(CreateAppDraftListingRequest) returns (CreateAppDraftListingResponse) {}
-
-  // Lists app draft listings.
-  rpc ListAppDraftListings(ListAppDraftListingsRequest) returns (ListAppDraftListingsResponse) {
-    option idempotency_level = NO_SIDE_EFFECTS;
-  }
-
-  // Updates an app draft listing.
-  rpc UpdateAppDraftListing(UpdateAppDraftListingRequest) returns (UpdateAppDraftListingResponse) {}
-
-  // Uploads an app draft listing icon.
-  rpc UploadAppDraftListingIcon(UploadAppDraftListingIconRequest) returns (UploadAppDraftListingIconResponse) {}
-
-  // Downloads an app draft listing icon.
-  rpc DownloadAppDraftListingIcon(DownloadAppDraftListingIconRequest) returns (DownloadAppDraftListingIconResponse) {
-    option idempotency_level = NO_SIDE_EFFECTS;
-  }
-
-  // Deletes an existing app draft listing.
-  rpc DeleteAppDraftListing(DeleteAppDraftListingRequest) returns (DeleteAppDraftListingResponse) {
-    option idempotency_level = IDEMPOTENT;
-  }
-
-  // Publishes an app draft to the app store.
-  rpc PublishAppDraft(PublishAppDraftRequest) returns (PublishAppDraftResponse) {
     option idempotency_level = IDEMPOTENT;
   }
 }
