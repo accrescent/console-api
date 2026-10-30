@@ -1,0 +1,29 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto2";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+extend buf.validate.StringRules {
+  // Requires that the field not contain any NULL characters, i.e., U+0000
+  // Unicode code points.
+  //
+  // ```proto
+  // message MyString {
+  //   // value must contain no NULL characters
+  //   string value = 1 [(buf.validate.field).string.no_null = true];
+  // }
+  // ```
+  optional bool no_null = 50000 [(buf.validate.predefined).cel = {
+    id: "string.no_null"
+    message: "value must not contain NULL characters"
+    expression: "!rule || !this.contains('\\x00')"
+  }];
+}

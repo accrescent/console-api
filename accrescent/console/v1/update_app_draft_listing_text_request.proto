@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
+import "accrescent/console/v1/string_rules.proto";
 import "buf/validate/validate.proto";
 import "google/protobuf/field_mask.proto";
 
@@ -21,14 +22,16 @@ message UpdateAppDraftListingTextRequest {
   // (e.g. "SecureChat - Secure Texting").
   optional string name = 2 [
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 30
+    (buf.validate.field).string.max_len = 30,
+    (buf.validate.field).string.(no_null) = true
   ];
 
   // A short description of the app to be shown in headers and small screen
   // spaces.
   optional string short_description = 3 [
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.max_len = 80
+    (buf.validate.field).string.max_len = 80,
+    (buf.validate.field).string.(no_null) = true
   ];
 
   // The etag of the listing text as last seen by the client.
