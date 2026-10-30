@@ -8,6 +8,8 @@ package accrescent.console.v1;
 
 import "accrescent/console/v1/create_app_draft_listing_request.proto";
 import "accrescent/console/v1/create_app_draft_listing_response.proto";
+import "accrescent/console/v1/create_app_draft_listing_text_request.proto";
+import "accrescent/console/v1/create_app_draft_listing_text_response.proto";
 import "accrescent/console/v1/create_app_draft_request.proto";
 import "accrescent/console/v1/create_app_draft_response.proto";
 import "accrescent/console/v1/delete_app_draft_listing_request.proto";
@@ -56,6 +58,9 @@ service AppDraftService {
   rpc GetAppDraftDetails(GetAppDraftDetailsRequest) returns (GetAppDraftDetailsResponse) {
     option idempotency_level = NO_SIDE_EFFECTS;
   }
+
+  // Creates listing text for an app draft.
+  rpc CreateAppDraftListingText(CreateAppDraftListingTextRequest) returns (CreateAppDraftListingTextResponse) {}
 
   // Lists app draft summaries for a given organization.
   //
