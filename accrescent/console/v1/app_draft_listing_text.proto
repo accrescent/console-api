@@ -20,4 +20,7 @@ message AppDraftListingText {
   // A short description of the app to be shown in headers and small screen
   // spaces.
   optional string short_description = 2 [(buf.validate.field).required = true];
+
+  // The etag of the listing text.
+  optional string etag = 3 [(buf.validate.field).required = true];
 }
