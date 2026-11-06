@@ -25,7 +25,7 @@ option java_package = "app.accrescent.console.v1";
 // Service providing RPCs for managing app drafts.
 service AppDraftService {
   // Creates a new app draft.
-  rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse) {}
+  rpc CreateAppDraft(CreateAppDraftRequest) returns (CreateAppDraftResponse);
 
   // Gets the details of an app draft to display on its corresponding page.
   rpc GetAppDraftDetails(GetAppDraftDetailsRequest) returns (GetAppDraftDetailsResponse) {
@@ -33,10 +33,10 @@ service AppDraftService {
   }
 
   // Creates listing text for an app draft.
-  rpc CreateAppDraftListingText(CreateAppDraftListingTextRequest) returns (CreateAppDraftListingTextResponse) {}
+  rpc CreateAppDraftListingText(CreateAppDraftListingTextRequest) returns (CreateAppDraftListingTextResponse);
 
   // Updates an app draft's listing text.
-  rpc UpdateAppDraftListingText(UpdateAppDraftListingTextRequest) returns (UpdateAppDraftListingTextResponse) {}
+  rpc UpdateAppDraftListingText(UpdateAppDraftListingTextRequest) returns (UpdateAppDraftListingTextResponse);
 
   // Lists app draft summaries for a given organization.
   //
