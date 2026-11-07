@@ -40,4 +40,13 @@ enum ErrorReason {
   // The etag provided by the caller doesn't match the resource's current etag,
   // meaning the resource has been updated since the caller last read it.
   ERROR_REASON_ETAG_MISMATCH = 8;
+
+  // The resource expired before the operation could complete.
+  ERROR_REASON_EXPIRED = 9;
+
+  // The provided image is not a valid PNG.
+  ERROR_REASON_INVALID_PNG = 10;
+
+  // The provided image does not have the required dimensions.
+  ERROR_REASON_INVALID_IMAGE_DIMENSIONS = 11;
 }

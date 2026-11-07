@@ -1,0 +1,24 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Response to replacing an app draft icon.
+message ReplaceAppDraftIconResponse {
+  // The unique ID of the created icon upload.
+  optional string app_draft_icon_upload_id = 1 [(buf.validate.field).required = true];
+
+  // An HTTP(S) URI to upload the icon to via a PUT request.
+  optional string upload_uri = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uri = true
+  ];
+}

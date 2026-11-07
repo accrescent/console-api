@@ -14,10 +14,16 @@ import "accrescent/console/v1/delete_app_draft_request.proto";
 import "accrescent/console/v1/delete_app_draft_response.proto";
 import "accrescent/console/v1/get_app_draft_details_request.proto";
 import "accrescent/console/v1/get_app_draft_details_response.proto";
+import "accrescent/console/v1/get_app_draft_icon_upload_request.proto";
+import "accrescent/console/v1/get_app_draft_icon_upload_response.proto";
 import "accrescent/console/v1/list_app_draft_summaries_request.proto";
 import "accrescent/console/v1/list_app_draft_summaries_response.proto";
+import "accrescent/console/v1/replace_app_draft_icon_request.proto";
+import "accrescent/console/v1/replace_app_draft_icon_response.proto";
 import "accrescent/console/v1/update_app_draft_listing_text_request.proto";
 import "accrescent/console/v1/update_app_draft_listing_text_response.proto";
+import "accrescent/console/v1/upload_app_draft_icon_request.proto";
+import "accrescent/console/v1/upload_app_draft_icon_response.proto";
 
 option java_multiple_files = true;
 option java_package = "app.accrescent.console.v1";
@@ -37,6 +43,17 @@ service AppDraftService {
 
   // Updates an app draft's listing text.
   rpc UpdateAppDraftListingText(UpdateAppDraftListingTextRequest) returns (UpdateAppDraftListingTextResponse);
+
+  // Creates an icon upload for an app draft which has no icon.
+  rpc UploadAppDraftIcon(UploadAppDraftIconRequest) returns (UploadAppDraftIconResponse);
+
+  // Creates an icon upload for replacing an app draft's existing icon.
+  rpc ReplaceAppDraftIcon(ReplaceAppDraftIconRequest) returns (ReplaceAppDraftIconResponse);
+
+  // Gets the status of an app draft icon upload.
+  rpc GetAppDraftIconUpload(GetAppDraftIconUploadRequest) returns (GetAppDraftIconUploadResponse) {
+    option idempotency_level = NO_SIDE_EFFECTS;
+  }
 
   // Lists app draft summaries for a given organization.
   //
