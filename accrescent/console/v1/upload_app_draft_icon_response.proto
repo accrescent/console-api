@@ -21,4 +21,9 @@ message UploadAppDraftIconResponse {
     (buf.validate.field).required = true,
     (buf.validate.field).string.uri = true
   ];
+
+  // HTTP headers which must be sent with the PUT request to upload_uri.
+  //
+  // The upload will fail if any of these headers are missing or altered.
+  map<string, string> upload_headers = 3;
 }
