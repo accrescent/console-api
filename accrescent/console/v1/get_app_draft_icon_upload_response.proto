@@ -1,0 +1,45 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "accrescent/console/v1/app_draft_icon.proto";
+import "buf/validate/validate.proto";
+import "google/protobuf/empty.proto";
+import "google/rpc/status.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// Response to getting an app draft icon upload.
+message GetAppDraftIconUploadResponse {
+  // Set if the icon hasn't been uploaded yet.
+  google.protobuf.Empty awaiting_upload = 1;
+
+  // Set if the upload has been received and is being processed.
+  google.protobuf.Empty processing = 2;
+
+  // The app draft's icon as produced by this upload.
+  //
+  // Set if processing succeeded and the app draft's icon has been updated
+  // accordingly.
+  AppDraftIcon icon = 3;
+
+  // The error which caused the upload to fail.
+  //
+  // Set if the upload failed.
+  google.rpc.Status error = 4;
+
+  option (buf.validate.message).oneof = {
+    fields: [
+      "awaiting_upload",
+      "processing",
+      "icon",
+      "error"
+    ]
+    required: true
+  };
+}

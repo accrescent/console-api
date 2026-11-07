@@ -1,0 +1,24 @@
+// SPDX-FileCopyrightText: © 2026 Logan Magee
+//
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package accrescent.console.v1;
+
+import "buf/validate/validate.proto";
+
+option java_multiple_files = true;
+option java_package = "app.accrescent.console.v1";
+
+// The icon of an app draft.
+message AppDraftIcon {
+  // An HTTP(S) URI of the icon.
+  optional string uri = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.uri = true
+  ];
+
+  // The etag of the icon.
+  optional string etag = 2 [(buf.validate.field).required = true];
+}

@@ -6,6 +6,7 @@ syntax = "proto3";
 
 package accrescent.console.v1;
 
+import "accrescent/console/v1/app_draft_icon.proto";
 import "accrescent/console/v1/app_draft_listing_text.proto";
 
 option java_multiple_files = true;
@@ -15,4 +16,10 @@ option java_package = "app.accrescent.console.v1";
 message GetAppDraftDetailsResponse {
   // The app draft's listing text, if set.
   AppDraftListingText listing_text = 1;
+
+  // The app draft's icon, if set.
+  AppDraftIcon icon = 2;
+
+  // The ID of the app draft icon upload currently being processed, if any.
+  optional string processing_icon_upload_id = 3;
 }
